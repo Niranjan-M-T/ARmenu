@@ -1,12 +1,10 @@
 /**
-
  * This script handles the dynamic loading of menu items, AR viewer functionality,
  * and swipe navigation within the AR modal.
  */
 document.addEventListener('DOMContentLoaded', () => {
     // --- DOM Element References ---
     const loader = document.getElementById('loader');
-
     const menuContainer = document.getElementById('menu-container');
     const modal = document.getElementById('ar-modal');
     const modelViewer = document.getElementById('model-viewer-component');
@@ -32,6 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    /**
+     * Fetches menu data, preloads the first model, and then populates the menu.
      */
     const loadMenu = async () => {
         try {
@@ -50,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             console.error('Error fetching menu data:', error);
             loader.classList.add('hidden');
-
             menuContainer.innerHTML = '<p style="color: #ff6600;">Failed to load menu. Please try again later.</p>';
         }
     };
@@ -63,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
         menuData.forEach((item, index) => {
             const menuItem = document.createElement('div');
             menuItem.classList.add('menu-item');
-
             menuItem.innerHTML = `
                 <img src="${item.image_url}" alt="${item.name}">
                 <div class="menu-item-content">
@@ -81,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
      * Adds click event listeners to all "View in AR" buttons.
      */
     const addArButtonListeners = () => {
-
         document.querySelectorAll('.ar-button').forEach(button => {
             button.addEventListener('click', () => {
                 const index = parseInt(button.getAttribute('data-index'), 10);
@@ -157,5 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
         handleSwipe();
     });
 
+    // Initial call to load the menu
     loadMenu();
 });

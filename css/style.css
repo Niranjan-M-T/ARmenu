@@ -134,7 +134,6 @@ model-viewer {
     }
 }
 
-
 /* Loader Styles */
 .loader {
     position: fixed;
@@ -194,5 +193,3 @@ model-viewer {
     font-size: 1em;
     color: #cccccc;
 }
-
-
