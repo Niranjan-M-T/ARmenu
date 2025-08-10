@@ -4,54 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AR Restaurant Menu</title>
-    <!-- Tailwind CSS for a modern look -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Custom styles for the AR button and layout */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f7fafc;
-        }
-        model-viewer {
-            width: 100%;
-            height: 400px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts for a modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="p-8">
+<body>
 
-    <div class="max-w-2xl mx-auto bg-white shadow-xl rounded-lg overflow-hidden">
-        <div class="md:flex">
-            <div class="md:flex-shrink-0">
-                <img class="h-48 w-full object-cover md:w-48" src="https://placehold.co/600x400/FF5733/FFFFFF?text=Dish+Image" alt="Placeholder image of a dish">
-            </div>
-            <div class="p-8">
-                <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Our Signature Dish</div>
-                <h1 class="block mt-1 text-lg leading-tight font-medium text-black">Spicy Chicken Curry</h1>
-                <p class="mt-2 text-gray-500">A delicious and aromatic chicken curry with a blend of exotic spices. Served with jasmine rice and fresh cilantro.</p>
-                
-                <!-- This is the model-viewer component for the AR experience -->
-                <div class="mt-4 border border-gray-200 rounded-lg overflow-hidden">
-                    <model-viewer
-                        src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
-                        alt="A 3D model of an astronaut"
-                        ar
-                        ar-modes="webxr scene-viewer quick-look"
-                        camera-controls
-                        touch-action="pan-y"
-                        class="w-full h-80"
-                    >
-                    </model-viewer>
-                </div>
+    <header>
+        <h1>The AR Eatery</h1>
+    </header>
 
-                <div class="mt-4 text-center">
-                    <p class="text-gray-600">Scan the button above to view this dish in your space!</p>
-                </div>
-            </div>
+    <main id="menu-container">
+        <!-- Menu items will be dynamically loaded here -->
+    </main>
+
+    <!-- Modal for the AR viewer -->
+    <div id="ar-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <!-- The model-viewer component will display the 3D model. -->
+            <model-viewer
+                id="model-viewer-component"
+                src=""
+                alt="A 3D model of a menu item"
+                ar
+                ar-modes="webxr scene-viewer quick-look"
+                camera-controls
+                touch-action="pan-y"
+            >
+            </model-viewer>
         </div>
     </div>
 
-    <!-- The model-viewer script must be included at the end of the body -->
+    <!-- The model-viewer script -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    <!-- Custom script to load menu items -->
+    <script src="js/script.js"></script>
 </body>
 </html>
