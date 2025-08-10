@@ -12,6 +12,10 @@
 </head>
 <body>
 
+    <div id="loader" class="loader">
+        <div class="spinner"></div>
+    </div>
+
     <header>
         <h1>The AR Eatery</h1>
     </header>
@@ -31,10 +35,16 @@
                 alt="A 3D model of a menu item"
                 ar
                 ar-modes="webxr scene-viewer quick-look"
+                ios-src=""
                 camera-controls
                 touch-action="pan-y"
+                reveal="auto"
             >
             </model-viewer>
+            <div id="ar-item-details" class="ar-item-details">
+                <h2 id="ar-item-name"></h2>
+                <p id="ar-item-description"></p>
+            </div>
         </div>
     </div>
 
