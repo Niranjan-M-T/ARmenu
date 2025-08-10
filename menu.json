@@ -3,24 +3,24 @@
     "name": "Spicy Chicken Curry",
     "description": "A delicious and aromatic chicken curry with a blend of exotic spices. Served with jasmine rice and fresh cilantro.",
     "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Curry",
-    "model_url": "https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+    "model_url": "assets/burger.glb"
   },
   {
     "name": "Classic Beef Burger",
     "description": "A juicy beef patty with lettuce, tomato, onion, and our special sauce, served in a brioche bun.",
     "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Burger",
-    "model_url": "https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+    "model_url": "assets/croissant.glb"
   },
   {
     "name": "Vegan Pasta",
     "description": "A delightful pasta dish with a creamy cashew sauce, roasted vegetables, and fresh basil.",
     "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Pasta",
-    "model_url": "https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+    "model_url": "assets/coke.glb"
   },
   {
     "name": "Chocolate Lava Cake",
     "description": "A decadent chocolate cake with a molten chocolate center, served with a scoop of vanilla ice cream.",
     "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Cake",
-    "model_url": "https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+    "model_url": "assets/pizza.glb"
   }
 ]
