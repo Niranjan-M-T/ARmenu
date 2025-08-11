@@ -48,3 +48,7 @@ app.post('/api/get-suggestion', async (req, res) => {
 
 // This line is essential for Vercel to run your Express app
 module.exports = app;
+
+
+
+
