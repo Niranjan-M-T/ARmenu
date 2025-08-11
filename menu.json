@@ -4,24 +4,26 @@
       "name": "Pepper Chicken",
       "description": "Spicy and succulent chicken pieces tossed in a flavorful pepper sauce.",
       "price": "8.99",
-      "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Pepper+Chicken",
+      "image_url": "assets/chicken_curry1.jpg",
       "ingredients": ["Chicken", "Black Pepper", "Onion", "Ginger Garlic Paste"],
       "nutritional_value": {"calories": "250kcal", "protein": "28g", "fat": "12g"},
-      "model_url": "https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+      "model_url": "assets/croissant.glb"
     },
     {
       "name": "Chicken Kabab",
       "description": "Tender chicken marinated in yogurt and spices, grilled to perfection.",
       "price": "9.99",
-      "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Chicken+Kabab",
+      "image_url": "assets/chicken_curry1.jpg",
       "ingredients": ["Chicken", "Yogurt", "Tandoori Masala", "Lemon Juice"],
-      "nutritional_value": {"calories": "220kcal", "protein": "30g", "fat": "8g"}
+      "nutritional_value": {"calories": "220kcal", "protein": "30g", "fat": "8g"},
+      "model_url": "assets/croissant.glb"
     },
     {
       "name": "Chicken Wings",
       "description": "Crispy fried chicken wings coated in a tangy and spicy sauce.",
       "price": "10.50",
-      "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Chicken+Wings",
+      "image_url": "assets/chicken.jpg",
+      "model_url": "assets/croissant.glb",
       "ingredients": ["Chicken Wings", "BBQ Sauce", "Garlic Powder", "Paprika"],
       "nutritional_value": {"calories": "350kcal", "protein": "25g", "fat": "22g"}
     },
@@ -30,6 +32,7 @@
       "description": "Tender mutton pieces pan-fried with a mix of traditional spices.",
       "price": "12.99",
       "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Mutton+Fry",
+      "model_url": "assets/croissant.glb",
       "ingredients": ["Mutton", "Onion", "Turmeric", "Garam Masala"],
       "nutritional_value": {"calories": "380kcal", "protein": "35g", "fat": "25g"}
     },
