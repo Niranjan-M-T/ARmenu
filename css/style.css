@@ -408,6 +408,7 @@ model-viewer {
 }
 
 #floating-nav-list {
+
     position: absolute;
     bottom: 70px;
     right: 0;
@@ -425,12 +426,14 @@ model-viewer {
 }
 
 #floating-nav-list a {
+
     display: block;
     padding: 10px 20px;
     color: #ffffff;
     text-decoration: none;
     transition: background-color 0.2s ease;
 }
+
 
 #floating-nav-list a:hover {
     background-color: #ff6600;
