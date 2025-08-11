@@ -1,5 +1,4 @@
 /**
-
  * This script handles the dynamic rendering of a categorized menu,
  * item detail pop-ups, conditional AR viewing, AI assistance, and floating navigation.
  */
@@ -33,10 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- State ---
     let menuData = {};
     let currentArItem = null;
+    let typewriterInterval = null;
 
     /**
      * Fetches menu data and initializes the application.
-
      */
     const loadMenu = async () => {
         try {
@@ -55,15 +54,31 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     /**
+     * Sets up Intersection Observer to animate items on scroll.
+     */
+    const setupScrollAnimations = () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        const menuItems = document.querySelectorAll('.menu-item');
+        menuItems.forEach(item => observer.observe(item));
+    };
+
+    /**
      * Renders the full categorized menu and populates the floating navigation.
      */
     const renderMenu = () => {
         menuContainer.innerHTML = '';
-        floatingNavList.innerHTML = ''; // Clear old nav links
+        floatingNavList.innerHTML = '';
 
         for (const category in menuData) {
             const categoryId = category.replace(/\s+/g, '-').replace(/[()]/g, '');
-            // Create category section
             const categorySection = document.createElement('section');
             categorySection.className = 'menu-category';
             categorySection.id = categoryId;
@@ -72,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
             categoryTitle.textContent = category;
             categorySection.appendChild(categoryTitle);
 
-            // Create grid for items
             const menuGrid = document.createElement('div');
             menuGrid.className = 'menu-grid';
 
@@ -93,22 +107,42 @@ document.addEventListener('DOMContentLoaded', () => {
             categorySection.appendChild(menuGrid);
             menuContainer.appendChild(categorySection);
 
-            // Add link to floating nav
             const navLink = document.createElement('li');
             navLink.innerHTML = `<a href="#${categoryId}">${category}</a>`;
             floatingNavList.appendChild(navLink);
         }
+
+        // After all items are in the DOM, set up animations
+        setupScrollAnimations();
+    };
+
+    /**
+     * Creates a typewriter effect for a given element.
+     */
+    const typewriter = (element, text, speed = 30) => {
+        if (typewriterInterval) clearInterval(typewriterInterval);
+        element.textContent = '';
+        let i = 0;
+        typewriterInterval = setInterval(() => {
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                i++;
+            } else {
+                clearInterval(typewriterInterval);
+                typewriterInterval = null;
+            }
+        }, speed);
     };
 
     /**
      * Shows the item details modal and populates it with data.
-     * @param {object} item - The menu item object.
      */
     const showDetailsModal = (item) => {
         detailsImg.src = item.image_url;
         detailsName.textContent = item.name;
-        detailsDescription.textContent = item.description;
         detailsPrice.textContent = `$${item.price}`;
+
+        typewriter(detailsDescription, item.description);
 
         detailsIngredients.innerHTML = '';
         item.ingredients.forEach(ingredient => {
@@ -149,7 +183,13 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // --- Modal Close Logic ---
-    const closeDetailsModal = () => detailsModal.style.display = 'none';
+    const closeDetailsModal = () => {
+        if (typewriterInterval) {
+            clearInterval(typewriterInterval);
+            typewriterInterval = null;
+        }
+        detailsModal.style.display = 'none';
+    };
     const closeArModal = () => {
         arModal.style.display = 'none';
         modelViewer.src = '';
@@ -244,6 +284,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Initi
+    // Initial load
     loadMenu();
 });
