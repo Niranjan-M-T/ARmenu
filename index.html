@@ -3,55 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AR Restaurant Menu</title>
-    <!-- Tailwind CSS for a modern look -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Custom styles for the AR button and layout */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f7fafc;
-        }
-        model-viewer {
-            width: 100%;
-            height: 400px;
-        }
-    </style>
+    <title>The AR Eatery - Menu</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="p-8">
+<body>
+    <!-- Main Page Loader -->
+    <div id="loader" class="loader">
+        <div class="spinner"></div>
+    </div>
 
-    <div class="max-w-2xl mx-auto bg-white shadow-xl rounded-lg overflow-hidden">
-        <div class="md:flex">
-            <div class="md:flex-shrink-0">
-                <img class="h-48 w-full object-cover md:w-48" src="https://placehold.co/600x400/FF5733/FFFFFF?text=Dish+Image" alt="Placeholder image of a dish">
-            </div>
-            <div class="p-8">
-                <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Our Signature Dish</div>
-                <h1 class="block mt-1 text-lg leading-tight font-medium text-black">Spicy Chicken Curry</h1>
-                <p class="mt-2 text-gray-500">A delicious and aromatic chicken curry with a blend of exotic spices. Served with jasmine rice and fresh cilantro.</p>
-                
-                <!-- This is the model-viewer component for the AR experience -->
-                <div class="mt-4 border border-gray-200 rounded-lg overflow-hidden">
-                    <model-viewer
-                        src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
-                        alt="A 3D model of an astronaut"
-                        ar
-                        ar-modes="webxr scene-viewer quick-look"
-                        camera-controls
-                        touch-action="pan-y"
-                        class="w-full h-80"
-                    >
-                    </model-viewer>
-                </div>
+    <header>
+        <h1>The AR Eatery</h1>
+    </header>
 
-                <div class="mt-4 text-center">
-                    <p class="text-gray-600">Scan the button above to view this dish in your space!</p>
-                </div>
+    <!-- Container for the dynamically generated menu -->
+    <main id="menu-container">
+        <!-- Categories and items will be injected here by JavaScript -->
+    </main>
+
+    <!-- Container for all fixed action buttons -->
+    <div class="fixed-action-buttons">
+        <button id="ai-assistant-btn" title="AI Meal Suggester">🤖</button>
+
+        <div id="floating-nav" class="floating-nav">
+            <button id="floating-nav-btn" title="Menu Categories">☰</button>
+            <ul id="floating-nav-list">
+                <!-- Category links will be injected here -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- ===== MODALS ===== -->
+
+    <!-- 1. Item Details Modal (New) -->
+    <div id="item-details-modal" class="modal">
+        <div class="modal-content item-details-content">
+            <span class="close-button">&times;</span>
+            <img id="details-img" src="" alt="Menu item image">
+            <h2 id="details-name"></h2>
+            <p id="details-description"></p>
+            <p class="price" id="details-price"></p>
+            <h3>Ingredients:</h3>
+            <ul id="details-ingredients"></ul>
+            <h3>Nutritional Value:</h3>
+            <p id="details-nutrition"></p>
+            <!-- This button will be shown conditionally by JS -->
+            <button id="details-ar-btn" class="ar-button" style="display: none;">View in Your Space (AR)</button>
+        </div>
+    </div>
+
+    <!-- 2. AR Viewer Modal (Existing, for conditional use) -->
+    <div id="ar-modal" class="modal">
+        <div class="modal-content ar-viewer-content">
+            <span class="close-button">&times;</span>
+            <model-viewer
+                id="model-viewer-component"
+                src=""
+                ios-src=""
+                alt="A 3D model of a menu item"
+                ar
+                ar-modes="webxr scene-viewer quick-look"
+                camera-controls
+                touch-action="pan-y"
+                reveal="auto"
+            >
+            </model-viewer>
+            <div id="ar-item-details" class="ar-item-details">
+                <h2 id="ar-item-name"></h2>
+                <p id="ar-item-description"></p>
             </div>
         </div>
     </div>
 
-    <!-- The model-viewer script must be included at the end of the body -->
+    <!-- 3. AI Assistant Modal (New) -->
+    <div id="ai-modal" class="modal">
+        <div class="modal-content ai-content">
+            <span class="close-button">&times;</span>
+            <h2>AI Meal Suggester</h2>
+            <p>Answer a few questions and I'll suggest a personalized meal for you!</p>
+            <form id="ai-questionnaire">
+                <label for="ai-people">How many people are eating?</label>
+                <input type="number" id="ai-people" min="1" value="1" required>
+
+                <label for="ai-fav-foods">What are some of your favorite foods or flavors?</label>
+                <input type="text" id="ai-fav-foods" placeholder="e.g., spicy, chicken, creamy pasta">
+
+                <label>Preference:</label>
+                <div class="radio-group">
+                    <input type="radio" id="ai-veg" name="ai-diet" value="Veg" checked>
+                    <label for="ai-veg">Veg</label>
+                    <input type="radio" id="ai-nonveg" name="ai-diet" value="Non-Veg">
+                    <label for="ai-nonveg">Non-Veg</label>
+                </div>
+
+                <label>Which courses are you interested in?</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="ai-starters" value="Starters">
+                    <label for="ai-starters">Starters</label>
+                    <input type="checkbox" id="ai-main" value="Main Course">
+                    <label for="ai-main">Main Course</label>
+                    <input type="checkbox" id="ai-dessert" value="Desserts">
+                    <label for="ai-dessert">Desserts</label>
+                </div>
+
+                <label>Budget:</label>
+                <div class="radio-group">
+                    <input type="radio" id="ai-budget" name="ai-budget" value="budget-friendly" checked>
+                    <label for="ai-budget">Budget-friendly</label>
+                    <input type="radio" id="ai-splurge" name="ai-budget" value="here to splurge">
+                    <label for="ai-splurge">Here to splurge</label>
+                </div>
+
+                <label for="ai-restrictions">Any dietary restrictions or allergies?</label>
+                <input type="text" id="ai-restrictions" placeholder="e.g., gluten-free, no nuts">
+
+                <label for="ai-spice">How spicy can you tolerate?</label>
+                <select id="ai-spice">
+                    <option value="mild">Mild</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="spicy">Spicy</option>
+                    <option value="very spicy">Very Spicy</option>
+                </select>
+
+                <button type="submit" class="ai-submit-btn">Get Suggestion</button>
+            </form>
+            <div id="ai-result-container" style="display: none;">
+                <h3>Here's my suggestion for you:</h3>
+                <div id="ai-result"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
