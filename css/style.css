@@ -385,15 +385,7 @@ model-viewer {
     align-items: center;
 }
 
-/* Specifics for the AI button */
-#ai-assistant-btn {
-    /* Already styled by the rule above */
-}
 
-/* The floating nav container no longer needs positioning */
-.floating-nav {
-    /* No position:fixed needed anymore */
-}
 
 .floating-nav-btn {
     width: 60px;
