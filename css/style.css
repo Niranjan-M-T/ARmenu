@@ -385,7 +385,15 @@ model-viewer {
     align-items: center;
 }
 
+/* Specifics for the AI button */
+#ai-assistant-btn {
+    /* Already styled by the rule above */
+}
 
+/* The floating nav container no longer needs positioning */
+.floating-nav {
+    /* No position:fixed needed anymore */
+}
 
 .floating-nav-btn {
     width: 60px;
@@ -399,7 +407,8 @@ model-viewer {
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-.floating-nav-list {
+#floating-nav-list {
+
     position: absolute;
     bottom: 70px;
     right: 0;
@@ -412,11 +421,12 @@ model-viewer {
     display: none; /* Hidden by default */
 }
 
-.floating-nav-list.show {
-    display: block !important; /* Use !important to ensure override */
+#floating-nav-list.show {
+    display: block;
 }
 
-.floating-nav-list a {
+#floating-nav-list a {
+
     display: block;
     padding: 10px 20px;
     color: #ffffff;
@@ -424,7 +434,8 @@ model-viewer {
     transition: background-color 0.2s ease;
 }
 
-.floating-nav-list a:hover {
+
+#floating-nav-list a:hover {
     background-color: #ff6600;
     border-radius: 5px;
 }

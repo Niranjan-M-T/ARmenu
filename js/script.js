@@ -247,6 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return prompt;
     };
 
+
     // Replace the old getAiSuggestion function with this:
     const getAiSuggestion = async (prompt) => {
         aiResultDiv.innerHTML = 'Thinking of a suggestion for you...';
@@ -273,6 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
             aiResultDiv.innerText = 'Sorry, I was unable to get a suggestion. Please try again.';
         }
     };
+
     // --- Floating Nav Logic ---
     floatingNavBtn.addEventListener('click', () => {
         floatingNavList.classList.toggle('show');
