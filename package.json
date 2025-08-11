@@ -1,0 +1,25 @@
+{
+  "name": "armenu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Niranjan-M-T/ARmenu.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Niranjan-M-T/ARmenu/issues"
+  },
+  "homepage": "https://github.com/Niranjan-M-T/ARmenu#readme",
+  "dependencies": {
+    "axios": "^1.11.0",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0"
+  }
+}

@@ -207,13 +207,32 @@ document.addEventListener('DOMContentLoaded', () => {
         return prompt;
     };
 
-    const getAiSuggestion = (prompt) => {
-        console.log("--- AI PROMPT ---");
-        console.log(prompt);
-        aiResultDiv.innerHTML = `<strong>Suggestion feature is in development.</strong><br><br>The following prompt would be sent to the AI:<br><pre>${prompt.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>`;
+    // Replace the old getAiSuggestion function with this:
+    const getAiSuggestion = async (prompt) => {
+        aiResultDiv.innerHTML = 'Thinking of a suggestion for you...';
         aiResultContainer.style.display = 'block';
-    };
 
+        try {
+            const response = await fetch('/api/get-suggestion', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ prompt: prompt }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok.');
+            }
+
+            const data = await response.json();
+            aiResultDiv.innerText = data.suggestion;
+
+        } catch (error) {
+            console.error('Error fetching AI suggestion:', error);
+            aiResultDiv.innerText = 'Sorry, I was unable to get a suggestion. Please try again.';
+        }
+    };
     // --- Floating Nav Logic ---
     floatingNavBtn.addEventListener('click', () => {
         floatingNavList.classList.toggle('show');
