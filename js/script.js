@@ -1,4 +1,5 @@
 /**
+
  * This script handles the dynamic rendering of a categorized menu,
  * item detail pop-ups, conditional AR viewing, AI assistance, and floating navigation.
  */
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /**
      * Fetches menu data and initializes the application.
+
      */
     const loadMenu = async () => {
         try {
@@ -223,6 +225,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Initial load
+    // Initi
     loadMenu();
 });

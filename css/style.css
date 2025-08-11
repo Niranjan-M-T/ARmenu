@@ -1,6 +1,8 @@
+
 html {
     scroll-behavior: smooth;
 }
+
 
 /* General Body Styles */
 body {
@@ -174,6 +176,7 @@ model-viewer {
         transform: rotate(360deg);
     }
 }
+
 
 /* ===== New Layout Styles ===== */
 
@@ -409,6 +412,7 @@ model-viewer {
 .modal-content.ar-viewer-content {
     max-width: 500px;
 }
+
 
 /* AR Item Details in Modal */
 .ar-item-details {
