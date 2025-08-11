@@ -5,7 +5,7 @@ const axios = require('axios');
 const path = require('path');
 
 const app = express();
-const PORT = 5500;
+const PORT = 3000;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -46,6 +46,5 @@ app.post('/api/get-suggestion', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+// This line is essential for Vercel to run your Express app
+module.exports = app;
