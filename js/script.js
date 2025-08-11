@@ -1,52 +1,52 @@
 /**
- * This script handles the dynamic loading of menu items, AR viewer functionality,
- * and swipe navigation within the AR modal.
+
+ * This script handles the dynamic rendering of a categorized menu,
+ * item detail pop-ups, conditional AR viewing, AI assistance, and floating navigation.
  */
 document.addEventListener('DOMContentLoaded', () => {
     // --- DOM Element References ---
-    const loader = document.getElementById('loader');
     const menuContainer = document.getElementById('menu-container');
-    const modal = document.getElementById('ar-modal');
+    const loader = document.getElementById('loader');
+
+    // Item Details Modal
+    const detailsModal = document.getElementById('item-details-modal');
+    const detailsCloseBtn = detailsModal.querySelector('.close-button');
+    const detailsImg = document.getElementById('details-img');
+    const detailsName = document.getElementById('details-name');
+    const detailsDescription = document.getElementById('details-description');
+    const detailsPrice = document.getElementById('details-price');
+    const detailsIngredients = document.getElementById('details-ingredients');
+    const detailsNutrition = document.getElementById('details-nutrition');
+    const detailsArBtn = document.getElementById('details-ar-btn');
+
+    // AR Viewer Modal
+    const arModal = document.getElementById('ar-modal');
+    const arCloseBtn = arModal.querySelector('.close-button');
     const modelViewer = document.getElementById('model-viewer-component');
-    const closeButton = document.querySelector('.close-button');
     const arItemName = document.getElementById('ar-item-name');
     const arItemDescription = document.getElementById('ar-item-description');
 
-    // --- State Variables ---
-    let menuData = [];
-    let currentModelIndex = 0;
-    let touchStartX = 0;
-    let touchEndX = 0;
+    // Floating Nav
+    const floatingNavBtn = document.getElementById('floating-nav-btn');
+    const floatingNavList = document.getElementById('floating-nav-list');
+
+    // --- State ---
+    let menuData = {};
+    let currentArItem = null;
 
     /**
-     * Preloads the first 3D model to improve initial load experience.
-     * @param {string} modelUrl - The URL of the model to preload.
-     */
-    const preloadFirstModel = async (modelUrl) => {
-        try {
-            await fetch(modelUrl);
-        } catch (error) {
-            console.error('Failed to preload the first model:', error);
-        }
-    };
+     * Fetches menu data and initializes the application.
 
-    /**
-     * Fetches menu data, preloads the first model, and then populates the menu.
      */
     const loadMenu = async () => {
         try {
             const response = await fetch('menu.json');
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            
-            const data = await response.json();
-            menuData = data; // Store menu data globally
+            menuData = await response.json();
 
-            if (menuData.length > 0) {
-                await preloadFirstModel(menuData[0].model_url);
-            }
-
-            loader.classList.add('hidden');
             renderMenu();
+            setTimeout(() => loader.classList.add('hidden'), 500);
+
         } catch (error) {
             console.error('Error fetching menu data:', error);
             loader.classList.add('hidden');
@@ -55,105 +55,176 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     /**
-     * Renders the menu items on the page.
+     * Renders the full categorized menu and populates the floating navigation.
      */
     const renderMenu = () => {
         menuContainer.innerHTML = '';
-        menuData.forEach((item, index) => {
-            const menuItem = document.createElement('div');
-            menuItem.classList.add('menu-item');
-            menuItem.innerHTML = `
-                <img src="${item.image_url}" alt="${item.name}">
-                <div class="menu-item-content">
-                    <h2>${item.name}</h2>
-                    <p>${item.description}</p>
-                    <button class="ar-button" data-index="${index}">View in AR</button>
-                </div>
-            `;
-            menuContainer.appendChild(menuItem);
-        });
-        addArButtonListeners();
-    };
+        floatingNavList.innerHTML = ''; // Clear old nav links
 
-    /**
-     * Adds click event listeners to all "View in AR" buttons.
-     */
-    const addArButtonListeners = () => {
-        document.querySelectorAll('.ar-button').forEach(button => {
-            button.addEventListener('click', () => {
-                const index = parseInt(button.getAttribute('data-index'), 10);
-                openArModal(index);
+        for (const category in menuData) {
+            const categoryId = category.replace(/\s+/g, '-').replace(/[()]/g, '');
+            // Create category section
+            const categorySection = document.createElement('section');
+            categorySection.className = 'menu-category';
+            categorySection.id = categoryId;
+
+            const categoryTitle = document.createElement('h2');
+            categoryTitle.textContent = category;
+            categorySection.appendChild(categoryTitle);
+
+            // Create grid for items
+            const menuGrid = document.createElement('div');
+            menuGrid.className = 'menu-grid';
+
+            menuData[category].forEach(item => {
+                const menuItem = document.createElement('div');
+                menuItem.className = 'menu-item';
+                menuItem.innerHTML = `
+                    <img src="${item.image_url}" alt="${item.name}">
+                    <div class="menu-item-content">
+                        <h2>${item.name}</h2>
+                        <p class="price">$${item.price}</p>
+                    </div>
+                `;
+                menuItem.addEventListener('click', () => showDetailsModal(item));
+                menuGrid.appendChild(menuItem);
             });
+
+            categorySection.appendChild(menuGrid);
+            menuContainer.appendChild(categorySection);
+
+            // Add link to floating nav
+            const navLink = document.createElement('li');
+            navLink.innerHTML = `<a href="#${categoryId}">${category}</a>`;
+            floatingNavList.appendChild(navLink);
+        }
+    };
+
+    /**
+     * Shows the item details modal and populates it with data.
+     * @param {object} item - The menu item object.
+     */
+    const showDetailsModal = (item) => {
+        detailsImg.src = item.image_url;
+        detailsName.textContent = item.name;
+        detailsDescription.textContent = item.description;
+        detailsPrice.textContent = `$${item.price}`;
+
+        detailsIngredients.innerHTML = '';
+        item.ingredients.forEach(ingredient => {
+            const li = document.createElement('li');
+            li.textContent = ingredient;
+            detailsIngredients.appendChild(li);
         });
+
+        let nutritionText = '';
+        for(const [key, value] of Object.entries(item.nutritional_value)) {
+            nutritionText += `<strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${value} `;
+        }
+        detailsNutrition.textContent = nutritionText.trim();
+
+        if (item.model_url) {
+            detailsArBtn.style.display = 'block';
+            currentArItem = item;
+            const newArBtn = detailsArBtn.cloneNode(true);
+            detailsArBtn.parentNode.replaceChild(newArBtn, detailsArBtn);
+            newArBtn.addEventListener('click', showArModal);
+        } else {
+            detailsArBtn.style.display = 'none';
+        }
+
+        detailsModal.style.display = 'flex';
     };
 
     /**
-     * Opens the AR modal and loads the 3D model for the given index.
-     * @param {number} index - The index of the menu item to display.
+     * Shows the AR viewer modal.
      */
-    const openArModal = (index) => {
-        currentModelIndex = index;
-        updateModalContent();
-        modal.style.display = 'flex';
+    const showArModal = () => {
+        if (!currentArItem) return;
+        detailsModal.style.display = 'none';
+        modelViewer.src = currentArItem.model_url;
+        arItemName.textContent = currentArItem.name;
+        arItemDescription.textContent = currentArItem.description;
+        arModal.style.display = 'flex';
     };
 
-    /**
-     * Updates the modal content (model, name, description) based on the current index.
-     */
-    const updateModalContent = () => {
-        const item = menuData[currentModelIndex];
-        modelViewer.src = item.model_url;
-        arItemName.textContent = item.name;
-        arItemDescription.textContent = item.description;
-    };
-
-    /**
-     * Closes the AR modal and unloads the 3D model.
-     */
+    // --- Modal Close Logic ---
+    const closeDetailsModal = () => detailsModal.style.display = 'none';
     const closeArModal = () => {
-        modal.style.display = 'none';
+        arModal.style.display = 'none';
         modelViewer.src = '';
     };
 
-    // --- Swipe Navigation Logic ---
-    const handleSwipe = () => {
-        const swipeThreshold = 50; // Minimum distance for a swipe in pixels
-        if (touchEndX < touchStartX - swipeThreshold) {
-            // Swiped left (next item)
-            // The modulo operator (%) ensures the index wraps around to 0 after the last item.
-            currentModelIndex = (currentModelIndex + 1) % menuData.length;
-            updateModalContent();
-        }
-        if (touchEndX > touchStartX + swipeThreshold) {
-            // Swiped right (previous item)
-            // Adding menuData.length before the modulo handles negative numbers correctly.
-            currentModelIndex = (currentModelIndex - 1 + menuData.length) % menuData.length;
-            updateModalContent();
-        }
+    detailsCloseBtn.addEventListener('click', closeDetailsModal);
+    arCloseBtn.addEventListener('click', closeArModal);
+
+    window.addEventListener('click', (event) => {
+        if (event.target === detailsModal) closeDetailsModal();
+        if (event.target === arModal) closeArModal();
+        if (event.target === aiModal) closeAiModal();
+    });
+
+    // --- AI Assistant Logic ---
+    const aiModal = document.getElementById('ai-modal');
+    const aiBtn = document.getElementById('ai-assistant-btn');
+    const aiCloseBtn = aiModal.querySelector('.close-button');
+    const aiForm = document.getElementById('ai-questionnaire');
+    const aiResultContainer = document.getElementById('ai-result-container');
+    const aiResultDiv = document.getElementById('ai-result');
+
+    const openAiModal = () => aiModal.style.display = 'flex';
+    const closeAiModal = () => aiModal.style.display = 'none';
+
+    aiBtn.addEventListener('click', openAiModal);
+    aiCloseBtn.addEventListener('click', closeAiModal);
+
+    aiForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = {
+            people: document.getElementById('ai-people').value,
+            favFoods: document.getElementById('ai-fav-foods').value,
+            diet: document.querySelector('input[name="ai-diet"]:checked').value,
+            courses: [...document.querySelectorAll('input[type="checkbox"]:checked')].map(cb => cb.value),
+            budget: document.querySelector('input[name="ai-budget"]:checked').value,
+            restrictions: document.getElementById('ai-restrictions').value,
+            spice: document.getElementById('ai-spice').value
+        };
+
+        const prompt = constructAiPrompt(formData, menuData);
+        getAiSuggestion(prompt);
+    });
+
+    const constructAiPrompt = (formData, menu) => {
+        let prompt = `You are a helpful AI assistant for "The AR Eatery" restaurant. Your only job is to suggest meals from our menu based on the customer's preferences. Do not answer any questions that are not about our food or restaurant. If asked about anything else, politely decline and steer the conversation back to our menu.\n\nHere is our full menu:\n${JSON.stringify(menu, null, 2)}\n\nA customer has the following preferences:\n`;
+        prompt += `- Number of people: ${formData.people}\n`;
+        prompt += `- Favorite foods or flavors: ${formData.favFoods || 'Not specified'}\n`;
+        prompt += `- Dietary preference: ${formData.diet}\n`;
+        prompt += `- Desired courses: ${formData.courses.length > 0 ? formData.courses.join(', ') : 'Not specified'}\n`;
+        prompt += `- Budget: ${formData.budget}\n`;
+        prompt += `- Dietary restrictions: ${formData.restrictions || 'None'}\n`;
+        prompt += `- Spice level tolerance: ${formData.spice}\n\n`;
+        prompt += `Based on this, please suggest a delicious and suitable meal combination from our menu. Present it in a friendly and appealing way.`;
+        return prompt;
     };
 
-    // --- Event Listeners ---
-    closeButton.addEventListener('click', closeArModal);
-    window.addEventListener('click', (event) => {
-        if (event.target === modal) closeArModal();
+    const getAiSuggestion = (prompt) => {
+        console.log("--- AI PROMPT ---");
+        console.log(prompt);
+        aiResultDiv.innerHTML = `<strong>Suggestion feature is in development.</strong><br><br>The following prompt would be sent to the AI:<br><pre>${prompt.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>`;
+        aiResultContainer.style.display = 'block';
+    };
+
+    // --- Floating Nav Logic ---
+    floatingNavBtn.addEventListener('click', () => {
+        floatingNavList.classList.toggle('show');
     });
 
-    // Error handling for model loading
-    modelViewer.addEventListener('error', (event) => {
-        console.error('Model Viewer Error:', event.detail);
-        // Alerting the user can help with mobile debugging
-        alert(`There was an error loading the 3D model: ${event.detail}`);
+    floatingNavList.addEventListener('click', (event) => {
+        if (event.target.tagName === 'A') {
+            floatingNavList.classList.remove('show');
+        }
     });
 
-    modelViewer.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    modelViewer.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    });
-
-    // Initial call to load the menu
+    // Initi
     loadMenu();
 });

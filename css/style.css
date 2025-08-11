@@ -1,3 +1,9 @@
+
+html {
+    scroll-behavior: smooth;
+}
+
+
 /* General Body Styles */
 body {
     font-family: 'Inter', sans-serif;
@@ -170,6 +176,243 @@ model-viewer {
         transform: rotate(360deg);
     }
 }
+
+
+/* ===== New Layout Styles ===== */
+
+/* Category Headings */
+.menu-category {
+    margin-top: 40px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ff6600;
+}
+
+.menu-category h2 {
+    font-size: 2.5em;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+/* Grid for menu items under a category */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+/* Overriding old menu-item styles for new layout */
+.menu-item {
+    cursor: pointer;
+}
+
+/* Hover Animation */
+.menu-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(255, 102, 0, 0.2);
+}
+
+.menu-item-content .price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ff6600;
+    margin-top: 15px;
+}
+
+
+/* ===== Item Details Modal Styles ===== */
+.item-details-content {
+    max-width: 600px;
+}
+
+.item-details-content img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.item-details-content h2 {
+    font-size: 2em;
+    color: #ff6600;
+    margin: 0 0 10px;
+}
+
+.item-details-content p {
+    font-size: 1em;
+    color: #cccccc;
+    margin-bottom: 15px;
+}
+
+.item-details-content .price {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ff6600;
+    margin-bottom: 20px;
+}
+
+.item-details-content h3 {
+    font-size: 1.2em;
+    color: #ffffff;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.item-details-content ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.item-details-content ul li {
+    background-color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+/* Conditional AR button inside details modal */
+#details-ar-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+
+/* ===== AI Assistant Styles ===== */
+.ai-button {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.ai-button:hover {
+    background-color: #e65c00;
+}
+
+.ai-content {
+    max-width: 500px;
+    text-align: left;
+}
+
+.ai-content form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.ai-content form input[type="text"],
+.ai-content form input[type="number"],
+.ai-content form select {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    border: 1px solid #555;
+    border-radius: 5px;
+    color: white;
+    box-sizing: border-box;
+}
+
+.ai-content form .radio-group,
+.ai-content form .checkbox-group {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.ai-content form .ai-submit-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 25px;
+    font-size: 1.2em;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ai-content form .ai-submit-btn:hover {
+    background-color: #e65c00;
+}
+
+#ai-result-container {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #2b2b2b;
+    border-radius: 5px;
+    border-left: 4px solid #ff6600;
+}
+
+
+/* ===== Floating Navigation Styles ===== */
+.floating-nav {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1001;
+}
+
+.floating-nav-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.floating-nav-list {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    background-color: #2b2b2b;
+    border-radius: 10px;
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    display: none; /* Hidden by default */
+}
+
+.floating-nav-list.show {
+    display: block;
+}
+
+.floating-nav-list a {
+    display: block;
+    padding: 10px 20px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.floating-nav-list a:hover {
+    background-color: #ff6600;
+    border-radius: 5px;
+}
+
+/* Adjust main modal content style for different pop-ups */
+.modal-content.ar-viewer-content {
+    max-width: 500px;
+}
+
 
 /* AR Item Details in Modal */
 .ar-item-details {
