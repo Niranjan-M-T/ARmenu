@@ -1,34 +1,34 @@
-// server.js
-require('dotenv').config(); // Load environment variables from .env file
+require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
-const path = require('path');
 
 const app = express();
-const PORT = 3000;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
-// Serve the static frontend files (HTML, CSS, JS)
-app.use(express.static(path.join(__dirname, '')));
 
-
-// 1. Create your API endpoint
+// The serverless function will handle requests to /api/*.
+// The Express app needs to match the full path.
 app.post('/api/get-suggestion', async (req, res) => {
+  console.log('Received request for AI suggestion.');
   try {
     const userPrompt = req.body.prompt;
     const apiKey = process.env.PERPLEXITY_API_KEY;
 
+    // --- DEBUG LOGGING ---
+    console.log(`Is PERPLEXITY_API_KEY present? ${!!apiKey}`);
     if (!apiKey) {
-      return res.status(500).json({ error: 'API key not configured.' });
+      console.error('API key not configured.');
+      return res.status(500).json({ error: 'API key not configured on the server.' });
     }
+    // --- END DEBUG LOGGING ---
 
-    // 2. Make the request to the Perplexity API
+    console.log('Sending request to Perplexity API...');
     const response = await axios.post('https://api.perplexity.ai/chat/completions', {
-      model: 'sonar', // or another model you prefer
+      model: 'sonar',
       messages: [
         { role: 'user', content: userPrompt }
-      ]
+      ],
     }, {
       headers: {
         'Authorization': `Bearer ${apiKey}`,
@@ -36,19 +36,34 @@ app.post('/api/get-suggestion', async (req, res) => {
       }
     });
 
-    // 3. Send the AI's response back to your frontend
+    console.log('Successfully received response from Perplexity API.');
     const suggestion = response.data.choices[0].message.content;
     res.json({ suggestion: suggestion });
 
   } catch (error) {
-    console.error('Error calling Perplexity API:', error.response ? error.response.data : error.message);
+    // --- DETAILED ERROR LOGGING ---
+    console.error('--- ERROR CALLING PERPLEXITY API ---');
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      console.error('Response Data:', error.response.data);
+      console.error('Response Status:', error.response.status);
+      console.error('Response Headers:', error.response.headers);
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.error('Request Error:', error.request);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.error('General Error Message:', error.message);
+    }
+    console.error('Error Config:', error.config);
+    console.error('--- END OF ERROR DETAILS ---');
+    // --- END DETAILED ERROR LOGGING ---
+
     res.status(500).json({ error: 'Failed to get suggestion from AI.' });
   }
 });
 
-// This line is essential for Vercel to run your Express app
+// This line is essential for Vercel to run the Express app
+// as a serverless function.
 module.exports = app;
-
-
-
-
