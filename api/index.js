@@ -1,34 +1,30 @@
-// server.js
-require('dotenv').config(); // Load environment variables from .env file
+require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
-const path = require('path');
 
 const app = express();
-const PORT = 3000;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
-// Serve the static frontend files (HTML, CSS, JS)
-app.use(express.static(path.join(__dirname, '')));
 
-
-// 1. Create your API endpoint
-app.post('/api/get-suggestion', async (req, res) => {
+// The serverless function will be invoked for paths starting with /api.
+// The Express app should handle the remainder of the path.
+// For a request to /api/get-suggestion, the path passed to the app is /get-suggestion.
+app.post('/get-suggestion', async (req, res) => {
   try {
     const userPrompt = req.body.prompt;
     const apiKey = process.env.PERPLEXITY_API_KEY;
 
     if (!apiKey) {
-      return res.status(500).json({ error: 'API key not configured.' });
+      console.error('API key not configured.');
+      return res.status(500).json({ error: 'API key not configured on the server.' });
     }
 
-    // 2. Make the request to the Perplexity API
     const response = await axios.post('https://api.perplexity.ai/chat/completions', {
-      model: 'sonar', // or another model you prefer
+      model: 'sonar',
       messages: [
         { role: 'user', content: userPrompt }
-      ]
+      ],
     }, {
       headers: {
         'Authorization': `Bearer ${apiKey}`,
@@ -36,7 +32,6 @@ app.post('/api/get-suggestion', async (req, res) => {
       }
     });
 
-    // 3. Send the AI's response back to your frontend
     const suggestion = response.data.choices[0].message.content;
     res.json({ suggestion: suggestion });
 
@@ -46,9 +41,6 @@ app.post('/api/get-suggestion', async (req, res) => {
   }
 });
 
-// This line is essential for Vercel to run your Express app
+// This line is essential for Vercel to run the Express app
+// as a serverless function.
 module.exports = app;
-
-
-
-
