@@ -1,0 +1,146 @@
+/* AI Page Specific Styles */
+body {
+    background: #0F0C29;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #24243E, #302B63, #0F0C29);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #24243E, #302B63, #0F0C29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#ai-page-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.home-link {
+    color: #ff6600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.home-link:hover {
+    color: #ffffff;
+}
+
+.ai-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.robot-container {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 102, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+#robot-viewer {
+    width: 100%;
+    height: 100%;
+    --poster-color: transparent;
+}
+
+.ai-header h2 {
+    font-size: 2.8em;
+    color: #ffffff;
+    font-family: 'Georgia', serif;
+    margin-bottom: 10px;
+}
+
+.ai-header p {
+    font-size: 1.2em;
+    color: #cccccc;
+}
+
+.ai-form-container {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 102, 0, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+#ai-questionnaire label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #e0e0e0;
+}
+
+#ai-questionnaire input[type="text"],
+#ai-questionnaire input[type="number"],
+#ai-questionnaire select {
+    width: 100%;
+    padding: 12px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 102, 0, 0.5);
+    border-radius: 5px;
+    color: white;
+    box-sizing: border-box;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#ai-questionnaire input[type="text"]:focus,
+#ai-questionnaire input[type="number"]:focus,
+#ai-questionnaire select:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #ff6600;
+    outline: none;
+}
+
+.radio-group,
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    padding-top: 5px;
+}
+
+.radio-group label,
+.checkbox-group label {
+    font-weight: normal;
+    color: #cccccc;
+    cursor: pointer;
+}
+
+.ai-submit-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    background: #ff6600;
+    background: -webkit-linear-gradient(to right, #ff9a44, #ff6600);
+    background: linear-gradient(to right, #ff9a44, #ff6600);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ai-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 102, 0, 0.4);
+}
+
+#ai-result-container {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    border-left: 5px solid #ff6600;
+    color: #e0e0e0;
+}
+
+#ai-result-container h3 {
+    margin-top: 0;
+    color: #ff6600;
+}
