@@ -145,6 +145,7 @@ body {
     color: #ff6600;
 }
 
+
 #ai-result .spinner {
     margin: 20px auto;
     width: 40px;
@@ -177,3 +178,4 @@ body {
     color: #cccccc;
     font-style: italic;
 }
+
