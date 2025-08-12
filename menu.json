@@ -13,7 +13,7 @@
       "name": "Chicken Kabab",
       "description": "Tender chicken marinated in yogurt and spices, grilled to perfection.",
       "price": "9.99",
-      "image_url": "assets/chicken_curry1.jpg",
+      "image_url": "assets/chicken_curry.jpg",
       "ingredients": ["Chicken", "Yogurt", "Tandoori Masala", "Lemon Juice"],
       "nutritional_value": {"calories": "220kcal", "protein": "30g", "fat": "8g"},
       "model_url": "assets/croissant.glb"
