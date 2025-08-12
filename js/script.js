@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             menuData[category].forEach(item => {
                 const menuItem = document.createElement('div');
                 menuItem.className = 'menu-item';
+
                 // Redesigned structure for the menu item
                 menuItem.innerHTML = `
                     <img src="${item.image_url}" alt="${item.name}" class="menu-item-img">
@@ -92,7 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             <p class="menu-item-price">$${item.price}</p>
                         </div>
                         <div class="menu-item-details"></div>
+
                     </div>
+                    <div class="menu-item-details"></div>
                 `;
                 menuItem.addEventListener('click', () => toggleDetails(menuItem, item));
                 menuGrid.appendChild(menuItem);

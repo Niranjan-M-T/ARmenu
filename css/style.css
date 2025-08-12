@@ -41,6 +41,7 @@ header h1 {
 
 /* Individual Menu Item Card - Redesigned */
 .menu-item {
+
     background-color: #1a1a1a;
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
@@ -55,12 +56,14 @@ header h1 {
 .menu-item:hover {
     transform: translateY(25px) scale(1.02);
     box-shadow: 0 12px 32px rgba(255, 102, 0, 0.2);
+
 }
 
 .menu-item.visible {
     opacity: 1;
     transform: translateY(0);
 }
+
 
 .menu-item.expanded .menu-item-details {
     max-height: 500px; /* Animate open */
@@ -105,6 +108,7 @@ header h1 {
     overflow: hidden;
     transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
     color: #b0b0b0;
+
 }
 
 .item-description {
