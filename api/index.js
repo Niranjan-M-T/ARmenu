@@ -14,21 +14,6 @@ app.post('/api/get-suggestion', async (req, res) => {
 
       return res.status(500).json({ error: 'API key not configured on the server.' });
     }
-    // --- END DEBUG LOGGING ---
-
-
-
-    const response = await axios.post(
-      'https://api.perplexity.ai/chat/completions',
-      {
-        model: 'sonar',
-        messages: [{ role: 'user', content: req.body.prompt }],
-      },
-      {
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-        },
 
 
     const response = await axios.post(

@@ -158,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let ingredientsHTML = item.ingredients.map(ing => `<li>${ing}</li>`).join('');
 
+
             detailsContainer.innerHTML = `
                 <p class="item-description">${item.description}</p>
                 <div class="item-extra-info">
@@ -182,6 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     showArModal();
                 });
             }
+
 
             menuItem.classList.add('expanded');
         }
