@@ -10,6 +10,11 @@ app.use(express.json());
 // The serverless function will handle requests to /api/*.
 // The Express app needs to match the full path.
 app.post('/api/get-suggestion', async (req, res) => {
+
+// The serverless function will be invoked for paths starting with /api.
+// The Express app should handle the remainder of the path.
+// For a request to /api/get-suggestion, the path passed to the app is /get-suggestion.
+app.post('/get-suggestion', async (req, res) => {
   console.log('Received request for AI suggestion.');
   try {
     const userPrompt = req.body.prompt;
