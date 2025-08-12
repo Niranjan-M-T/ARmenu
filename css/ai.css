@@ -34,6 +34,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     padding: 10px;
     
 }
@@ -145,11 +146,11 @@ body {
 }
 
 
-/* 
+
  body {
 	 background: #2a88c5 url(http://zmwlt.com/bucket/cz-20150128-what-color-2-bg.jpg) center center / 70%;
 	 position: relative;
-} */
+} 
  #robot {
 	 position: relative;
 	 top: 50%;
