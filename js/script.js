@@ -83,14 +83,17 @@ document.addEventListener('DOMContentLoaded', () => {
             menuData[category].forEach(item => {
                 const menuItem = document.createElement('div');
                 menuItem.className = 'menu-item';
-                // New structure for the menu item
+
+                // Redesigned structure for the menu item
                 menuItem.innerHTML = `
-                    <div class="menu-item-summary">
-                        <img src="${item.image_url}" alt="${item.name}" class="menu-item-img">
-                        <div class="menu-item-info">
+                    <img src="${item.image_url}" alt="${item.name}" class="menu-item-img">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
                             <h2 class="menu-item-name">${item.name}</h2>
                             <p class="menu-item-price">$${item.price}</p>
                         </div>
+                        <div class="menu-item-details"></div>
+
                     </div>
                     <div class="menu-item-details"></div>
                 `;
