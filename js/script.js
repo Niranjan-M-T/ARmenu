@@ -8,16 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const loader = document.getElementById('loader');
 
     // Item Details Modal
-    const detailsModal = document.getElementById('item-details-modal');
-    const detailsCloseBtn = detailsModal.querySelector('.close-button');
-    const detailsImg = document.getElementById('details-img');
-    const detailsName = document.getElementById('details-name');
-    const detailsDescription = document.getElementById('details-description');
-    const detailsPrice = document.getElementById('details-price');
-    const detailsIngredients = document.getElementById('details-ingredients');
-    const detailsNutrition = document.getElementById('details-nutrition');
-    const detailsArBtn = document.getElementById('details-ar-btn');
-
     // AR Viewer Modal
     const arModal = document.getElementById('ar-modal');
     const arCloseBtn = arModal.querySelector('.close-button');
@@ -93,14 +83,18 @@ document.addEventListener('DOMContentLoaded', () => {
             menuData[category].forEach(item => {
                 const menuItem = document.createElement('div');
                 menuItem.className = 'menu-item';
+                // Redesigned structure for the menu item
                 menuItem.innerHTML = `
-                    <img src="${item.image_url}" alt="${item.name}">
+                    <img src="${item.image_url}" alt="${item.name}" class="menu-item-img">
                     <div class="menu-item-content">
-                        <h2>${item.name}</h2>
-                        <p class="price">$${item.price}</p>
+                        <div class="menu-item-header">
+                            <h2 class="menu-item-name">${item.name}</h2>
+                            <p class="menu-item-price">$${item.price}</p>
+                        </div>
+                        <div class="menu-item-details"></div>
                     </div>
                 `;
-                menuItem.addEventListener('click', () => showDetailsModal(item));
+                menuItem.addEventListener('click', () => toggleDetails(menuItem, item));
                 menuGrid.appendChild(menuItem);
             });
 
@@ -135,39 +129,59 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     /**
-     * Shows the item details modal and populates it with data.
+     * Toggles the expanded details view for a menu item.
      */
-    const showDetailsModal = (item) => {
-        detailsImg.src = item.image_url;
-        detailsName.textContent = item.name;
-        detailsPrice.textContent = `$${item.price}`;
+    const toggleDetails = (menuItem, item) => {
+        const detailsContainer = menuItem.querySelector('.menu-item-details');
+        const isExpanded = menuItem.classList.contains('expanded');
 
-        typewriter(detailsDescription, item.description);
-
-        detailsIngredients.innerHTML = '';
-        item.ingredients.forEach(ingredient => {
-            const li = document.createElement('li');
-            li.textContent = ingredient;
-            detailsIngredients.appendChild(li);
+        // Close any other expanded items
+        document.querySelectorAll('.menu-item.expanded').forEach(openItem => {
+            if (openItem !== menuItem) {
+                openItem.classList.remove('expanded');
+                openItem.querySelector('.menu-item-details').innerHTML = '';
+            }
         });
 
-        let nutritionText = '';
-        for(const [key, value] of Object.entries(item.nutritional_value)) {
-            nutritionText += `<strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${value} `;
-        }
-        detailsNutrition.textContent = nutritionText.trim();
-
-        if (item.model_url) {
-            detailsArBtn.style.display = 'block';
-            currentArItem = item;
-            const newArBtn = detailsArBtn.cloneNode(true);
-            detailsArBtn.parentNode.replaceChild(newArBtn, detailsArBtn);
-            newArBtn.addEventListener('click', showArModal);
+        if (isExpanded) {
+            menuItem.classList.remove('expanded');
+            detailsContainer.innerHTML = '';
         } else {
-            detailsArBtn.style.display = 'none';
-        }
+            // Build the details HTML
+            let nutritionHTML = '';
+            for (const [key, value] of Object.entries(item.nutritional_value)) {
+                nutritionHTML += `<span><strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${value}</span>`;
+            }
 
-        detailsModal.style.display = 'flex';
+            let ingredientsHTML = item.ingredients.map(ing => `<li>${ing}</li>`).join('');
+
+            detailsContainer.innerHTML = `
+                <p class="item-description">${item.description}</p>
+                <div class="item-extra-info">
+                    <div>
+                        <h3>Ingredients:</h3>
+                        <ul class="item-ingredients">${ingredientsHTML}</ul>
+                    </div>
+                    <div>
+                        <h3>Nutritional Value:</h3>
+                        <div class="item-nutrition">${nutritionHTML}</div>
+                    </div>
+                </div>
+                ${item.model_url ? `<button class="ar-button">View in Your Space (AR)</button>` : ''}
+            `;
+
+            // Add event listener for the AR button if it exists
+            if (item.model_url) {
+                const arButton = detailsContainer.querySelector('.ar-button');
+                arButton.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent the toggleDetails from firing again
+                    currentArItem = item;
+                    showArModal();
+                });
+            }
+
+            menuItem.classList.add('expanded');
+        }
     };
 
     /**
@@ -183,97 +197,23 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // --- Modal Close Logic ---
-    const closeDetailsModal = () => {
-        if (typewriterInterval) {
-            clearInterval(typewriterInterval);
-            typewriterInterval = null;
-        }
-        detailsModal.style.display = 'none';
-    };
     const closeArModal = () => {
         arModal.style.display = 'none';
         modelViewer.src = '';
     };
 
-    detailsCloseBtn.addEventListener('click', closeDetailsModal);
     arCloseBtn.addEventListener('click', closeArModal);
 
     window.addEventListener('click', (event) => {
-        if (event.target === detailsModal) closeDetailsModal();
         if (event.target === arModal) closeArModal();
         if (event.target === aiModal) closeAiModal();
     });
 
-    // --- AI Assistant Logic ---
-    const aiModal = document.getElementById('ai-modal');
+    // --- AI Assistant Logic (Moved to ai.js) ---
     const aiBtn = document.getElementById('ai-assistant-btn');
-    const aiCloseBtn = aiModal.querySelector('.close-button');
-    const aiForm = document.getElementById('ai-questionnaire');
-    const aiResultContainer = document.getElementById('ai-result-container');
-    const aiResultDiv = document.getElementById('ai-result');
-
-    const openAiModal = () => aiModal.style.display = 'flex';
-    const closeAiModal = () => aiModal.style.display = 'none';
-
-    aiBtn.addEventListener('click', openAiModal);
-    aiCloseBtn.addEventListener('click', closeAiModal);
-
-    aiForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const formData = {
-            people: document.getElementById('ai-people').value,
-            favFoods: document.getElementById('ai-fav-foods').value,
-            diet: document.querySelector('input[name="ai-diet"]:checked').value,
-            courses: [...document.querySelectorAll('input[type="checkbox"]:checked')].map(cb => cb.value),
-            budget: document.querySelector('input[name="ai-budget"]:checked').value,
-            restrictions: document.getElementById('ai-restrictions').value,
-            spice: document.getElementById('ai-spice').value
-        };
-
-        const prompt = constructAiPrompt(formData, menuData);
-        getAiSuggestion(prompt);
+    aiBtn.addEventListener('click', () => {
+        window.location.href = 'ai.html';
     });
-
-    const constructAiPrompt = (formData, menu) => {
-        let prompt = `You are a helpful AI assistant for "The AR Eatery" restaurant. Your only job is to suggest meals from our menu based on the customer's preferences. Do not answer any questions that are not about our food or restaurant. If asked about anything else, politely decline and steer the conversation back to our menu.\n\nHere is our full menu:\n${JSON.stringify(menu, null, 2)}\n\nA customer has the following preferences:\n`;
-        prompt += `- Number of people: ${formData.people}\n`;
-        prompt += `- Favorite foods or flavors: ${formData.favFoods || 'Not specified'}\n`;
-        prompt += `- Dietary preference: ${formData.diet}\n`;
-        prompt += `- Desired courses: ${formData.courses.length > 0 ? formData.courses.join(', ') : 'Not specified'}\n`;
-        prompt += `- Budget: ${formData.budget}\n`;
-        prompt += `- Dietary restrictions: ${formData.restrictions || 'None'}\n`;
-        prompt += `- Spice level tolerance: ${formData.spice}\n\n`;
-        prompt += `Based on this, please suggest a delicious and suitable meal combination from our menu. Present it in a friendly and appealing way.`;
-        return prompt;
-    };
-
-
-    // Replace the old getAiSuggestion function with this:
-    const getAiSuggestion = async (prompt) => {
-        aiResultDiv.innerHTML = 'Thinking of a suggestion for you...';
-        aiResultContainer.style.display = 'block';
-
-        try {
-            const response = await fetch('/api/get-suggestion', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ prompt: prompt }),
-            });
-
-            if (!response.ok) {
-                throw new Error('Network response was not ok.');
-            }
-
-            const data = await response.json();
-            aiResultDiv.innerText = data.suggestion;
-
-        } catch (error) {
-            console.error('Error fetching AI suggestion:', error);
-            aiResultDiv.innerText = 'Sorry, I was unable to get a suggestion. Please try again.';
-        }
-    };
 
     // --- Floating Nav Logic ---
     floatingNavBtn.addEventListener('click', () => {

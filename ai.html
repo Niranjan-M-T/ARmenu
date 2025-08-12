@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Meal Suggester - The AR Eatery</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ai.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1><a href="index.html" class="home-link">The AR Eatery</a></h1>
+    </header>
+
+    <main id="ai-page-container">
+        <div class="ai-header">
+            <div class="robot-container">
+                <!-- Animated Robot will go here -->
+                <model-viewer
+                    id="robot-viewer"
+                    src="assets/croissant.glb"
+                    alt="A 3D model of a croissant"
+                    ar
+                    ar-modes="webxr scene-viewer quick-look"
+                    camera-controls
+                    touch-action="pan-y"
+                    autoplay
+                    loop
+                >
+                </model-viewer>
+            </div>
+            <h2>AI Meal Suggester</h2>
+            <p>Let our AI chef curate the perfect meal for you based on your tastes!</p>
+        </div>
+
+        <div id="ai-modal" class="ai-form-container">
+            <form id="ai-questionnaire">
+                <label for="ai-people">How many people are eating?</label>
+                <input type="number" id="ai-people" min="1" value="1" required>
+
+                <label for="ai-fav-foods">What are some of your favorite foods or flavors?</label>
+                <input type="text" id="ai-fav-foods" placeholder="e.g., spicy, chicken, creamy pasta">
+
+                <label>Preference:</label>
+                <div class="radio-group">
+                    <input type="radio" id="ai-veg" name="ai-diet" value="Veg" checked>
+                    <label for="ai-veg">Veg</label>
+                    <input type="radio" id="ai-nonveg" name="ai-diet" value="Non-Veg">
+                    <label for="ai-nonveg">Non-Veg</label>
+                </div>
+
+                <label>Which courses are you interested in?</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="ai-starters" value="Starters">
+                    <label for="ai-starters">Starters</label>
+                    <input type="checkbox" id="ai-main" value="Main Course">
+                    <label for="ai-main">Main Course</label>
+                    <input type="checkbox" id="ai-dessert" value="Desserts">
+                    <label for="ai-dessert">Desserts</label>
+                </div>
+
+                <label>Budget:</label>
+                <div class="radio-group">
+                    <input type="radio" id="ai-budget" name="ai-budget" value="budget-friendly" checked>
+                    <label for="ai-budget">Budget-friendly</label>
+                    <input type="radio" id="ai-splurge" name="ai-budget" value="here to splurge">
+                    <label for="ai-splurge">Here to splurge</label>
+                </div>
+
+                <label for="ai-restrictions">Any dietary restrictions or allergies?</label>
+                <input type="text" id="ai-restrictions" placeholder="e.g., gluten-free, no nuts">
+
+                <label for="ai-spice">How spicy can you tolerate?</label>
+                <select id="ai-spice">
+                    <option value="mild">Mild</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="spicy">Spicy</option>
+                    <option value="very spicy">Very Spicy</option>
+                </select>
+
+                <button type="submit" class="ai-submit-btn">Get Suggestion</button>
+            </form>
+            <div id="ai-result-container" style="display: none;">
+                <h3>Here's my suggestion for you:</h3>
+                <div id="ai-result"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    <script src="js/ai.js"></script>
+</body>
+</html>
