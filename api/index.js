@@ -1,34 +1,30 @@
-// server.js
-require('dotenv').config(); // Load environment variables from .env file
+require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
-const path = require('path');
 
 const app = express();
-const PORT = 3000;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
-// Serve the static frontend files (HTML, CSS, JS)
-app.use(express.static(path.join(__dirname, '')));
 
-
-// 1. Create your API endpoint
+// The serverless function will handle requests to /api/*.
+// The Express app needs to match the full path.
 app.post('/api/get-suggestion', async (req, res) => {
   try {
     const userPrompt = req.body.prompt;
     const apiKey = process.env.PERPLEXITY_API_KEY;
 
     if (!apiKey) {
-      return res.status(500).json({ error: 'API key not configured.' });
+      // This log is safe and helpful.
+      console.error('API key not configured.');
+      return res.status(500).json({ error: 'API key not configured on the server.' });
     }
 
-    // 2. Make the request to the Perplexity API
     const response = await axios.post('https://api.perplexity.ai/chat/completions', {
-      model: 'sonar', // or another model you prefer
+      model: 'sonar',
       messages: [
         { role: 'user', content: userPrompt }
-      ]
+      ],
     }, {
       headers: {
         'Authorization': `Bearer ${apiKey}`,
@@ -36,19 +32,16 @@ app.post('/api/get-suggestion', async (req, res) => {
       }
     });
 
-    // 3. Send the AI's response back to your frontend
     const suggestion = response.data.choices[0].message.content;
     res.json({ suggestion: suggestion });
 
   } catch (error) {
-    console.error('Error calling Perplexity API:', error.response ? error.response.data : error.message);
+    // Using a very simple catch block to avoid any syntax errors.
+    console.error('Error calling Perplexity API:', error.message);
     res.status(500).json({ error: 'Failed to get suggestion from AI.' });
   }
 });
 
-// This line is essential for Vercel to run your Express app
+// This line is essential for Vercel to run the Express app
+// as a serverless function.
 module.exports = app;
-
-
-
-
