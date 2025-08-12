@@ -38,24 +38,7 @@
 
     <!-- ===== MODALS ===== -->
 
-    <!-- 1. Item Details Modal (New) -->
-    <div id="item-details-modal" class="modal">
-        <div class="modal-content item-details-content">
-            <span class="close-button">&times;</span>
-            <img id="details-img" src="" alt="Menu item image">
-            <h2 id="details-name"></h2>
-            <p id="details-description"></p>
-            <p class="price" id="details-price"></p>
-            <h3>Ingredients:</h3>
-            <ul id="details-ingredients"></ul>
-            <h3>Nutritional Value:</h3>
-            <p id="details-nutrition"></p>
-            <!-- This button will be shown conditionally by JS -->
-            <button id="details-ar-btn" class="ar-button" style="display: none;">View in Your Space (AR)</button>
-        </div>
-    </div>
-
-    <!-- 2. AR Viewer Modal (Existing, for conditional use) -->
+    <!-- 1. AR Viewer Modal (Existing, for conditional use) -->
     <div id="ar-modal" class="modal">
         <div class="modal-content ar-viewer-content">
             <span class="close-button">&times;</span>
@@ -78,64 +61,7 @@
         </div>
     </div>
 
-    <!-- 3. AI Assistant Modal (New) -->
-    <div id="ai-modal" class="modal">
-        <div class="modal-content ai-content">
-            <span class="close-button">&times;</span>
-            <h2>AI Meal Suggester</h2>
-            <p>Answer a few questions and I'll suggest a personalized meal for you!</p>
-            <form id="ai-questionnaire">
-                <label for="ai-people">How many people are eating?</label>
-                <input type="number" id="ai-people" min="1" value="1" required>
-
-                <label for="ai-fav-foods">What are some of your favorite foods or flavors?</label>
-                <input type="text" id="ai-fav-foods" placeholder="e.g., spicy, chicken, creamy pasta">
-
-                <label>Preference:</label>
-                <div class="radio-group">
-                    <input type="radio" id="ai-veg" name="ai-diet" value="Veg" checked>
-                    <label for="ai-veg">Veg</label>
-                    <input type="radio" id="ai-nonveg" name="ai-diet" value="Non-Veg">
-                    <label for="ai-nonveg">Non-Veg</label>
-                </div>
-
-                <label>Which courses are you interested in?</label>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="ai-starters" value="Starters">
-                    <label for="ai-starters">Starters</label>
-                    <input type="checkbox" id="ai-main" value="Main Course">
-                    <label for="ai-main">Main Course</label>
-                    <input type="checkbox" id="ai-dessert" value="Desserts">
-                    <label for="ai-dessert">Desserts</label>
-                </div>
-
-                <label>Budget:</label>
-                <div class="radio-group">
-                    <input type="radio" id="ai-budget" name="ai-budget" value="budget-friendly" checked>
-                    <label for="ai-budget">Budget-friendly</label>
-                    <input type="radio" id="ai-splurge" name="ai-budget" value="here to splurge">
-                    <label for="ai-splurge">Here to splurge</label>
-                </div>
-
-                <label for="ai-restrictions">Any dietary restrictions or allergies?</label>
-                <input type="text" id="ai-restrictions" placeholder="e.g., gluten-free, no nuts">
-
-                <label for="ai-spice">How spicy can you tolerate?</label>
-                <select id="ai-spice">
-                    <option value="mild">Mild</option>
-                    <option value="medium" selected>Medium</option>
-                    <option value="spicy">Spicy</option>
-                    <option value="very spicy">Very Spicy</option>
-                </select>
-
-                <button type="submit" class="ai-submit-btn">Get Suggestion</button>
-            </form>
-            <div id="ai-result-container" style="display: none;">
-                <h3>Here's my suggestion for you:</h3>
-                <div id="ai-result"></div>
-            </div>
-        </div>
-    </div>
+    <!-- AI Assistant Modal has been moved to its own page: ai.html -->
 
     <!-- Scripts -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
