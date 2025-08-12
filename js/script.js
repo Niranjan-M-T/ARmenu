@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="menu-item-content">
                         <div class="menu-item-header">
                             <h2 class="menu-item-name">${item.name}</h2>
-                            <p class="menu-item-price">$${item.price}</p>
+                            <p class="menu-item-price">₹${item.price}</p>
                         </div>
                         <div class="menu-item-details"></div>
 

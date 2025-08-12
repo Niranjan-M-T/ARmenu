@@ -3,7 +3,7 @@
     {
       "name": "Pepper Chicken",
       "description": "Spicy and succulent chicken pieces tossed in a flavorful pepper sauce.",
-      "price": "8.99",
+      "price": "746",
       "image_url": "assets/chicken_curry1.jpg",
       "ingredients": ["Chicken", "Black Pepper", "Onion", "Ginger Garlic Paste"],
       "nutritional_value": {"calories": "250kcal", "protein": "28g", "fat": "12g"},
@@ -12,7 +12,7 @@
     {
       "name": "Chicken Kabab",
       "description": "Tender chicken marinated in yogurt and spices, grilled to perfection.",
-      "price": "9.99",
+      "price": "829",
       "image_url": "assets/chicken_curry.jpg",
       "ingredients": ["Chicken", "Yogurt", "Tandoori Masala", "Lemon Juice"],
       "nutritional_value": {"calories": "220kcal", "protein": "30g", "fat": "8g"},
@@ -21,7 +21,7 @@
     {
       "name": "Chicken Wings",
       "description": "Crispy fried chicken wings coated in a tangy and spicy sauce.",
-      "price": "10.50",
+      "price": "872",
       "image_url": "assets/chicken.jpg",
       "model_url": "assets/croissant.glb",
       "ingredients": ["Chicken Wings", "BBQ Sauce", "Garlic Powder", "Paprika"],
@@ -30,7 +30,7 @@
     {
       "name": "Mutton Fry",
       "description": "Tender mutton pieces pan-fried with a mix of traditional spices.",
-      "price": "12.99",
+      "price": "1078",
       "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Mutton+Fry",
       "model_url": "assets/croissant.glb",
       "ingredients": ["Mutton", "Onion", "Turmeric", "Garam Masala"],
@@ -39,7 +39,7 @@
     {
       "name": "Prawn Fry",
       "description": "Juicy prawns marinated and fried for a crispy and flavorful starter.",
-      "price": "14.50",
+      "price": "1204",
       "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Prawn+Fry",
       "ingredients": ["Prawns", "Ginger Garlic Paste", "Lemon", "Corn Flour"],
       "nutritional_value": {"calories": "250kcal", "protein": "25g", "fat": "14g"}
@@ -49,7 +49,7 @@
     {
       "name": "Chicken Gravy",
       "description": "A classic home-style chicken curry with a rich and savory gravy.",
-      "price": "12.00",
+      "price": "996",
       "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Chicken+Gravy",
       "ingredients": ["Chicken", "Onion", "Tomato", "Garam Masala"],
       "nutritional_value": {"calories": "400kcal", "protein": "35g", "fat": "25g"}
@@ -57,15 +57,15 @@
     {
       "name": "Chicken Makhanwali",
       "description": "A creamy and buttery chicken dish, famously known as Butter Chicken.",
-      "price": "14.00",
-      "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Chicken+Makhanwali",
+      "price": "1162",
+      "image_url":.co/600x400/FF5733/FFFFFF?text=Chicken+Makhanwali",
       "ingredients": ["Chicken", "Tomato Puree", "Cream", "Cashew Paste"],
       "nutritional_value": {"calories": "550kcal", "protein": "38g", "fat": "40g"}
     },
     {
       "name": "Mutton Curry",
       "description": "Tender mutton cooked in a spicy and aromatic gravy, perfect with rice or bread.",
-      "price": "15.00",
+      "price": "1245",
       "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Mutton+Curry",
       "ingredients": ["Mutton", "Onion", "Tomato", "Yogurt", "Spices"],
       "nutritional_value": {"calories": "480kcal", "protein": "40g", "fat": "32g"}
@@ -73,7 +73,7 @@
     {
       "name": "Pork Vindaloo",
       "description": "A fiery and tangy pork curry from Goa, with roots in Portuguese cuisine.",
-      "price": "14.50",
+      "price": "1204",
       "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Pork+Vindaloo",
       "ingredients": ["Pork", "Vinegar", "Potatoes", "Red Chillies", "Garlic"],
       "nutritional_value": {"calories": "520kcal", "protein": "35g", "fat": "40g"}
@@ -83,7 +83,7 @@
     {
       "name": "Chicken Biryani",
       "description": "A savory chicken and rice dish with layers of chicken, rice, and aromatics steamed together.",
-      "price": "13.99",
+      "price": "1161",
       "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Chicken+Biryani",
       "ingredients": ["Basmati Rice", "Chicken", "Yogurt", "Biryani Masala"],
       "nutritional_value": {"calories": "600kcal", "protein": "40g", "fat": "25g"},
@@ -92,7 +92,7 @@
     {
       "name": "Mutton Biryani",
       "description": "A royal dish with beautifully spiced and fragrant layers of biryani rice centered with juicy, tender mutton.",
-      "price": "15.99",
+      "price": "1327",
       "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Mutton+Biryani",
       "ingredients": ["Basmati Rice", "Mutton", "Saffron", "Fried Onions"],
       "nutritional_value": {"calories": "650kcal", "protein": "45g", "fat": "30g"}
@@ -100,7 +100,7 @@
     {
       "name": "Chicken Fried Rice",
       "description": "Classic fried rice with tender chicken pieces, vegetables, and a savory soy sauce blend.",
-      "price": "11.50",
+      "price": "955",
       "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Chicken+Fried+Rice",
       "ingredients": ["Rice", "Chicken", "Carrots", "Peas", "Soy Sauce"],
       "nutritional_value": {"calories": "500kcal", "protein": "30g", "fat": "20g"}
@@ -110,7 +110,7 @@
     {
       "name": "Chicken Pizza",
       "description": "Classic pizza topped with seasoned chicken, mozzarella cheese, and a tangy tomato sauce.",
-      "price": "12.99",
+      "price": "1078",
       "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Chicken+Pizza",
       "ingredients": ["Pizza Dough", "Tomato Sauce", "Mozzarella Cheese", "Chicken", "Bell Peppers"],
       "nutritional_value": {"calories": "700kcal", "protein": "40g", "fat": "30g"}
@@ -118,7 +118,7 @@
     {
       "name": "Margarita Pizza",
       "description": "A simple and delicious pizza with fresh tomatoes, mozzarella, basil, and olive oil.",
-      "price": "10.99",
+      "price": "912",
       "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Margarita+Pizza",
       "ingredients": ["Pizza Dough", "Tomatoes", "Mozzarella Cheese", "Fresh Basil", "Olive Oil"],
       "nutritional_value": {"calories": "600kcal", "protein": "25g", "fat": "25g"}
@@ -128,7 +128,7 @@
     {
       "name": "Kerala Parota",
       "description": "A layered flatbread, originating from the Indian subcontinent, made from maida flour.",
-      "price": "2.50",
+      "price": "208",
       "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Kerala+Parota",
       "ingredients": ["Maida Flour", "Oil", "Water", "Salt"],
       "nutritional_value": {"calories": "200kcal", "protein": "5g", "fat": "8g"}
@@ -136,7 +136,7 @@
     {
       "name": "Chappati",
       "description": "A simple and soft unleavened flatbread made from whole wheat flour.",
-      "price": "1.50",
+      "price": "125",
       "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Chappati",
       "ingredients": ["Whole Wheat Flour", "Water", "Salt"],
       "nutritional_value": {"calories": "120kcal", "protein": "4g", "fat": "1g"}
@@ -146,7 +146,7 @@
     {
       "name": "Mutton Biryani Combo",
       "description": "A family pack of our royal Mutton Biryani, served with raita and gravy.",
-      "price": "65.00",
+      "price": "5395",
       "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Mutton+Biryani+Combo",
       "ingredients": ["Mutton Biryani", "Raita", "Gravy", "Salad"],
       "nutritional_value": {"calories": "3000kcal", "protein": "220g", "fat": "150g"}
@@ -154,7 +154,7 @@
     {
       "name": "Chicken Biryani Combo",
       "description": "A generous portion of our classic Chicken Biryani for the whole family.",
-      "price": "55.00",
+      "price": "4565",
       "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Chicken+Biryani+Combo",
       "ingredients": ["Chicken Biryani", "Raita", "Gravy", "Salad"],
       "nutritional_value": {"calories": "2800kcal", "protein": "200g", "fat": "120g"}
