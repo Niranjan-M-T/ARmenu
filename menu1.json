@@ -22,7 +22,7 @@
       "name": "Chicken Wings",
       "description": "Crispy fried chicken wings coated in a tangy and spicy sauce. This is a medium spicy dish.",
       "price": "872",
-      "image_url": "assets/chicken1.jpg",
+      "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Chicken+Wings",
       "model_url": "assets/croissant.glb",
       "ingredients": ["Chicken Wings", "BBQ Sauce", "Garlic Powder", "Paprika", "Possible allergens: Soy."],
       "nutritional_value": {"calories": "350kcal", "protein": "25g", "fat": "22g"}
@@ -31,7 +31,7 @@
       "name": "Mutton Fry",
       "description": "Tender mutton pieces pan-fried with a mix of traditional spices. Medium spicy.",
       "price": "1078",
-      "image_url": "assets/chicken_curry.jpg",
+      "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Mutton+Fry",
       "model_url": "assets/croissant.glb",
       "ingredients": ["Mutton", "Onion", "Turmeric", "Garam Masala", "Possible allergens: None mentioned."],
       "nutritional_value": {"calories": "380kcal", "protein": "35g", "fat": "25g"}
