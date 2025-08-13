@@ -211,6 +211,7 @@ header h1 {
     font-weight: bold;
     color: #ffffff;
     cursor: pointer;
+    z-index: 10;
 }
 
 model-viewer {

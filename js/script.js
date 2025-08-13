@@ -214,7 +214,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('click', (event) => {
         if (event.target === arModal) closeArModal();
-        if (event.target === aiModal) closeAiModal();
     });
 
     // --- AI Assistant Logic (Moved to ai.js) ---
