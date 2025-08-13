@@ -9,36 +9,47 @@ app.use(express.json());
 app.post('/api/get-suggestion', async (req, res) => {
   console.log('Received request for AI suggestion.');
   try {
-    const apiKey = process.env.PERPLEXITY_API_KEY;
+    const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
-
-      return res.status(500).json({ error: 'API key not configured on the server.' });
+      return res.status(500).json({ error: 'GEMINI_API_KEY not configured on the server.' });
     }
 
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
 
     const response = await axios.post(
-      'https://api.perplexity.ai/chat/completions',
+      url,
       {
-        model: 'sonar',
-        messages: [{ role: 'user', content: req.body.prompt }],
+        contents: [
+          {
+            parts: [
+              {
+                text: req.body.prompt,
+              },
+            ],
+          },
+        ],
       },
       {
         headers: {
-          'Authorization': `Bearer ${apiKey}`,
           'Content-Type': 'application/json',
         },
       }
     );
 
+    // Safely access the suggestion text
+    const suggestion = response.data?.candidates?.[0]?.content?.parts?.[0]?.text;
 
-    res.json({ suggestion: response.data.choices[0].message.content });
+    if (!suggestion) {
+      console.error('Unexpected response structure from Gemini API:', response.data);
+      return res.status(500).json({ error: 'Failed to parse suggestion from AI response.' });
+    }
+
+    res.json({ suggestion });
 
   } catch (error) {
-    console.error('API Error:', error.message);
-
+    console.error('API Error:', error.response ? error.response.data : error.message);
     res.status(500).json({ error: 'Failed to get suggestion from AI.' });
   }
 });
-
 
 module.exports = app;

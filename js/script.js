@@ -171,11 +171,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="item-nutrition">${nutritionHTML}</div>
                     </div>
                 </div>
-                ${item.model_url ? `<button class="ar-button">View in Your Space (AR)</button>` : ''}
+                ${(item.model_url && item.model_url.trim() !== '') ? `<button class="ar-button">View in Your Space (AR)</button>` : ''}
             `;
 
             // Add event listener for the AR button if it exists
-            if (item.model_url) {
+            if (item.model_url && item.model_url.trim() !== '') {
                 const arButton = detailsContainer.querySelector('.ar-button');
                 arButton.addEventListener('click', (e) => {
                     e.stopPropagation(); // Prevent the toggleDetails from firing again
