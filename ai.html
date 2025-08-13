@@ -87,30 +87,44 @@
                 <label for="ai-fav-foods">What are some of your favorite foods or flavors?</label>
                 <input type="text" id="ai-fav-foods" placeholder="e.g., spicy, chicken, creamy pasta">
 
-                <label>Preference:</label>
-                <div class="radio-group">
-                    <input type="radio" id="ai-veg" name="ai-diet" value="Veg" checked>
-                    <label for="ai-veg">Veg</label>
-                    <input type="radio" id="ai-nonveg" name="ai-diet" value="Non-Veg">
-                    <label for="ai-nonveg">Non-Veg</label>
+                <label>Dietary Preference:</label>
+                <div class="toggle-switch-container">
+                    <span class="toggle-label">Veg</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="ai-diet-toggle" value="Non-Veg">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="toggle-label">Non-Veg</span>
                 </div>
+                <input type="hidden" id="ai-diet" name="ai-diet" value="Veg">
+
 
                 <label>Which courses are you interested in?</label>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="ai-starters" value="Starters">
-                    <label for="ai-starters">Starters</label>
-                    <input type="checkbox" id="ai-main" value="Main Course">
-                    <label for="ai-main">Main Course</label>
-                    <input type="checkbox" id="ai-dessert" value="Desserts">
-                    <label for="ai-dessert">Desserts</label>
+                <div class="checkbox-group-vertical">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="ai-starters" value="Starters">
+                        <label for="ai-starters">Starters</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="ai-main" value="Main Course">
+                        <label for="ai-main">Main Course</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="ai-drinks" value="Drinks">
+                        <label for="ai-drinks">Drinks</label>
+                    </div>
                 </div>
 
                 <label>Budget:</label>
-                <div class="radio-group">
-                    <input type="radio" id="ai-budget" name="ai-budget" value="budget-friendly" checked>
-                    <label for="ai-budget">Budget-friendly</label>
-                    <input type="radio" id="ai-splurge" name="ai-budget" value="here to splurge">
-                    <label for="ai-splurge">Here to splurge</label>
+                <div class="radio-group-vertical">
+                    <div class="radio-item">
+                        <input type="radio" id="ai-budget-friendly" name="ai-budget" value="budget-friendly" checked>
+                        <label for="ai-budget-friendly">Budget-friendly</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="ai-splurge" name="ai-budget" value="here to splurge">
+                        <label for="ai-splurge">Here to splurge</label>
+                    </div>
                 </div>
 
                 <label for="ai-restrictions">Any dietary restrictions or allergies?</label>
