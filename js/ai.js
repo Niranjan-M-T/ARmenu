@@ -2,6 +2,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const aiForm = document.getElementById('ai-questionnaire');
     const aiResultContainer = document.getElementById('ai-result-container');
     const aiResultDiv = document.getElementById('ai-result');
+    const dietToggle = document.getElementById('ai-diet-toggle');
+    const dietInput = document.getElementById('ai-diet');
+
+    dietToggle.addEventListener('change', () => {
+        if (dietToggle.checked) {
+            dietInput.value = 'Non-Veg';
+        } else {
+            dietInput.value = 'Veg';
+        }
+    });
+
 
     let menuData = {};
 
@@ -29,8 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = {
             people: document.getElementById('ai-people').value,
             favFoods: document.getElementById('ai-fav-foods').value,
-            diet: document.querySelector('input[name="ai-diet"]:checked').value,
-            courses: [...document.querySelectorAll('input[type="checkbox"]:checked')].map(cb => cb.value),
+            diet: dietInput.value,
+            courses: [...document.querySelectorAll('.checkbox-group-vertical input[type="checkbox"]:checked')].map(cb => cb.value),
             budget: document.querySelector('input[name="ai-budget"]:checked').value,
             restrictions: document.getElementById('ai-restrictions').value,
             spice: document.getElementById('ai-spice').value
@@ -41,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const constructAiPrompt = (formData, menu) => {
+        const numberOfSuggestions = Math.min(10, Math.max(2, formData.people * 2));
 
         let prompt = `You are a helpful AI assistant for "The AR Eatery" restaurant. Your only job is to suggest meals from our menu based on the customer's preferences. Here is our full menu:\n${JSON.stringify(menu, null, 2)}\n\nA customer has the following preferences:\n`;
 
@@ -52,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         prompt += `- Dietary restrictions: ${formData.restrictions || 'None'}\n`;
         prompt += `- Spice level tolerance: ${formData.spice}\n\n`;
 
-        prompt += `Based on this, suggest a meal combination from the menu. Respond with only a single, valid JSON object. The JSON object should have a single key "suggestions", which is an array of objects. Each object in the array should have two keys: "name" (the name of the suggested item) and "reason" (a brief, one-sentence reason for the suggestion). Example: {"suggestions": [{"name": "Chicken Fried Rice", "reason": "A classic non-vegetarian main course that is budget-friendly and matches a medium spice tolerance."}]}`;
+        prompt += `Based on this, suggest a meal combination from the menu. Please provide a variety of options. If the number of people is greater than 1, suggest at least two items per person, up to a maximum of ${numberOfSuggestions} total items. Respond with only a single, valid JSON object. The JSON object should have a single key "suggestions", which is an array of objects. Each object in the array should have two keys: "name" (the name of the suggested item) and "reason" (a brief, one-sentence reason for the suggestion). Example: {"suggestions": [{"name": "Chicken Fried Rice", "reason": "A classic non-vegetarian main course that is budget-friendly and matches a medium spice tolerance."}, {"name": "Vegetable Spring Rolls", "reason": "A light and crispy starter to begin the meal."}]}`;
 
         return prompt;
     };
