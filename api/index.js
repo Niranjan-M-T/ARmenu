@@ -27,7 +27,7 @@ app.post('/api/get-suggestion', async (req, res) => {
       return res.status(500).json({ error: 'GEMINI_API_KEY not configured on the server.' });
     }
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-latest:generateContent?key=${apiKey}`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
     const response = await axios.post(
       url,
