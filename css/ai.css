@@ -380,7 +380,7 @@ input:checked + .slider:before {
 
 .loader-text {
     color: #ff6600;
-    font-size: 1.2em;
+    font-size: 0.7em;
     text-align: center;
     padding: 20px;
     border-right: .15em solid orange; /* The typwriter cursor */
