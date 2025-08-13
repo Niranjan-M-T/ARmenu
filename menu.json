@@ -58,7 +58,7 @@
       "name": "Chicken Makhanwali",
       "description": "A creamy and buttery chicken dish, famously known as Butter Chicken.",
       "price": "1162",
-      "image_url":.co/600x400/FF5733/FFFFFF?text=Chicken+Makhanwali",
+      "image_url":"https://placehold.co/600x400/FF5733/FFFFFF?text=Chicken+Makhanwali",
       "ingredients": ["Chicken", "Tomato Puree", "Cream", "Cashew Paste"],
       "nutritional_value": {"calories": "550kcal", "protein": "38g", "fat": "40g"}
     },
