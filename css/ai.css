@@ -268,13 +268,8 @@ input:checked + .slider:before {
 	 position: relative;
 } 
  #robot {
-	 position: relative;
-	 top: 50%;
-	 left: 50%;
-	 transform: translate3d(-50%, -50%, 0);
-	 max-width: 50vw;
-	 max-height: 80vh;
-	 margin: 0 auto;
+	 max-width: 100%;
+	 max-height: 100%;
 }
  #body {
 	 animation: hover 1.1s ease-in-out 0s infinite alternate;
@@ -383,3 +378,20 @@ input:checked + .slider:before {
     font-style: italic;
 }
 
+.loader-text {
+    color: #ff6600;
+    font-size: 1.2em;
+    text-align: center;
+    padding: 20px;
+    border-right: .15em solid orange; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .1em; /* Adjust as needed */
+    animation:
+        blinking-cursor .75s step-end infinite;
+}
+
+@keyframes blinking-cursor {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+}

@@ -47,8 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             spice: document.getElementById('ai-spice').value
         };
 
-        const prompt = constructAiPrompt(formData, menuData);
-        getAiSuggestion(prompt);
+        getAiSuggestion(formData);
     });
 
     const constructAiPrompt = (formData, menu) => {
@@ -76,15 +75,24 @@ document.addEventListener('DOMContentLoaded', () => {
         prompt += `- Dietary restrictions: ${formData.restrictions || 'None'}\n`;
         prompt += `- Spice level tolerance: ${formData.spice}\n\n`;
 
+        if (formData.randomSeed) {
+            prompt += `Please provide a different combination this time.\n`;
+        }
+
         prompt += `Based on this,suggest a meal combination from the menu for the exact number of people who are eating, assuming that one main-course is enough for one person, also assume that one item from the gravy section is enough for 2 people and a gravy item should be accompanied by a bread or rice item. other conditions: if you are suggesting something from the bread section it should always be accompanied by something from the gravy section.Respond with only a single, valid JSON object. The JSON object should have a single key "suggestions", which is an array of objects. Each object in the array should have two keys: "name" (the name of the suggested item) and "reason" (a brief, one-sentence reason for the suggestion). Example: {"suggestions": [{"name": "Chicken Fried Rice", "reason": "A classic non-vegetarian main course that is budget-friendly and matches a medium spice tolerance."}, {"name": "Vegetable Spring Rolls", "reason": "A light and crispy starter to begin the meal."}]}`;
 
         return prompt;
     };
 
-    const getAiSuggestion = async (prompt) => {
+    const getAiSuggestion = async (formData) => {
+        // Clear previous "Try Again" button if it exists
+        const existingBtn = aiResultContainer.querySelector('.ai-submit-btn');
+        if (existingBtn) {
+            existingBtn.remove();
+        }
 
-        aiResultDiv.innerHTML = '<div class="spinner"></div>'; // Show a spinner
-
+        const prompt = constructAiPrompt(formData, menuData);
+        showInteractiveLoader();
         aiResultContainer.style.display = 'block';
 
         try {
@@ -102,7 +110,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const data = await response.json();
 
-            const suggestionText = data.suggestion;
+            let suggestionText = data.suggestion;
+
+            // Clean the suggestion text from markdown
+            if (suggestionText.startsWith("```json")) {
+                suggestionText = suggestionText.substring(7, suggestionText.length - 3).trim();
+            }
+
 
             // Try to parse the suggestion as JSON
             try {
@@ -116,6 +130,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                     html += '</ul>';
                     aiResultDiv.innerHTML = html;
+
+                    const tryAgainBtn = document.createElement('button');
+                    tryAgainBtn.textContent = 'Try Another Combination';
+                    tryAgainBtn.classList.add('ai-submit-btn');
+                    tryAgainBtn.style.marginTop = '20px';
+
+                    tryAgainBtn.addEventListener('click', () => {
+                        getAiSuggestion({
+                            ...formData,
+                            randomSeed: Math.random()
+                        });
+                    });
+
+                    aiResultContainer.appendChild(tryAgainBtn);
+
                 } else {
                     throw new Error("Invalid JSON format from AI.");
                 }
@@ -130,6 +159,44 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error fetching AI suggestion:', error);
             aiResultDiv.innerText = 'Sorry, I was unable to get a suggestion. Please try again.';
         }
+    };
+
+    const showInteractiveLoader = () => {
+        const loaderTexts = [
+            "Analysing the menu...",
+            "Understanding your preferences...",
+            "Cooking up combinations...",
+            "Checking the stock in the kitchen...",
+            "Talking to the chef...",
+            "Taste testing for you..."
+        ];
+
+        let textIndex = 0;
+        let charIndex = 0;
+        aiResultDiv.innerHTML = '<div id="loader-text" class="loader-text"></div>';
+        const loaderTextElement = document.getElementById('loader-text');
+
+        const type = () => {
+            if (textIndex < loaderTexts.length) {
+                if (charIndex < loaderTexts[textIndex].length) {
+                    loaderTextElement.textContent += loaderTexts[textIndex].charAt(charIndex);
+                    charIndex++;
+                    setTimeout(type, 50);
+                } else {
+                    setTimeout(() => {
+                        textIndex++;
+                        charIndex = 0;
+                        loaderTextElement.textContent = '';
+                        type();
+                    }, 1000); // Wait a bit before showing the next text
+                }
+            } else {
+                // Optional: Show a final message or just stop
+                loaderTextElement.textContent = "Finalizing suggestions...";
+            }
+        };
+
+        type();
     };
 
     // Initial load of menu data
