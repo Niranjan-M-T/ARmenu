@@ -54,7 +54,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const constructAiPrompt = (formData, menu) => {
         const numberOfSuggestions = Math.min(10, Math.max(2, formData.people * 2));
 
-        let prompt = `You are a helpful AI assistant for "The AR Eatery" restaurant. Your only job is to suggest meals from our menu based on the customer's preferences. Here is our full menu:\n${JSON.stringify(menu, null, 2)}\n\nA customer has the following preferences:\n`;
+        // Deep clone the menu to avoid modifying the original data
+        let filteredMenu = JSON.parse(JSON.stringify(menu));
+
+        // Conditionally remove menu sections based on selected courses
+        const selectedCourses = formData.courses || [];
+        if (!selectedCourses.includes('Starters')) {
+            delete filteredMenu.Starters;
+        }
+        if (!selectedCourses.includes('Drinks')) {
+            delete filteredMenu.Drinks;
+        }
+
+        let prompt = `You are a helpful AI assistant for "The AR Eatery" restaurant. Your only job is to suggest meals from our menu based on the customer's preferences. Here is our full menu:\n${JSON.stringify(filteredMenu, null, 2)}\n\nA customer has the following preferences:\n`;
 
         prompt += `- Number of people: ${formData.people}\n`;
         prompt += `- Favorite foods or flavors: ${formData.favFoods || 'Not specified'}\n`;
