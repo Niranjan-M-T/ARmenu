@@ -194,8 +194,11 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     const showArModal = () => {
         if (!currentArItem) return;
-        detailsModal.style.display = 'none';
-        modelViewer.src = currentArItem.model_url;
+        modelViewer.setAttribute('src', currentArItem.model_url);
+        // The ios-src attribute is used for AR Quick Look on iOS devices
+        if (modelViewer.hasAttribute('ios-src')) {
+            modelViewer.setAttribute('ios-src', currentArItem.model_url.replace(/\.glb$/, '.usdz'));
+        }
         arItemName.textContent = currentArItem.name;
         arItemDescription.textContent = currentArItem.description;
         arModal.style.display = 'flex';
@@ -211,7 +214,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('click', (event) => {
         if (event.target === arModal) closeArModal();
-        if (event.target === aiModal) closeAiModal();
     });
 
     // --- AI Assistant Logic (Moved to ai.js) ---
