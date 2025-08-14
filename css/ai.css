@@ -421,3 +421,29 @@ footer{
     margin-bottom: 0px;
     padding-bottom: 0px;
 }
+
+/* Back to Menu Button */
+.back-to-menu-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #ff6600;
+    background: -webkit-linear-gradient(to right, #ff9a44, #ff6600);
+    background: linear-gradient(to right, #ff9a44, #ff6600);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 60px;
+    font-size: 24px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.back-to-menu-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 102, 0, 0.5);
+}
