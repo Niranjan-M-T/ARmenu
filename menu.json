@@ -4,26 +4,26 @@
       "name": "Pepper Chicken",
       "description": "Spicy and succulent chicken pieces tossed in a flavorful pepper sauce. This is a very spicy dish.",
       "price": "746",
-      "image_url": "assets/chicken_curry1.jpg",
+      "image_url": "https://raw.githubusercontent.com/Niranjan-M-T/ARmenu/main/assets/chicken_curry1.jpg",
       "ingredients": ["Chicken", "Black Pepper", "Onion", "Ginger Garlic Paste", "Possible allergens: None mentioned."],
       "nutritional_value": {"calories": "250kcal", "protein": "28g", "fat": "12g"},
-      "model_url": "assets/croissant.glb"
+      "model_url": "https://raw.githubusercontent.com/Niranjan-M-T/ARmenu/main/assets/croissant.glb"
     },
     {
       "name": "Chicken Kabab",
       "description": "Tender chicken marinated in yogurt and spices, grilled to perfection. Mildly spicy.",
       "price": "829",
-      "image_url": "assets/chicken.jpg",
+      "image_url": "https://raw.githubusercontent.com/Niranjan-M-T/ARmenu/main/assets/chicken.jpg",
       "ingredients": ["Chicken", "Yogurt", "Tandoori Masala", "Lemon Juice", "Possible allergens: Dairy."],
       "nutritional_value": {"calories": "220kcal", "protein": "30g", "fat": "8g"},
-      "model_url": "assets/croissant.glb"
+      "model_url": "https://raw.githubusercontent.com/Niranjan-M-T/ARmenu/main/assets/croissant.glb"
     },
     {
       "name": "Chicken Wings",
       "description": "Crispy fried chicken wings coated in a tangy and spicy sauce. This is a medium spicy dish.",
       "price": "872",
-      "image_url": "assets/chicken1.jpg",
-      "model_url": "assets/croissant.glb",
+      "image_url": "https://raw.githubusercontent.com/Niranjan-M-T/ARmenu/main/assets/chicken1.jpg",
+      "model_url": "https://raw.githubusercontent.com/Niranjan-M-T/ARmenu/main/assets/croissant.glb",
       "ingredients": ["Chicken Wings", "BBQ Sauce", "Garlic Powder", "Paprika", "Possible allergens: Soy."],
       "nutritional_value": {"calories": "350kcal", "protein": "25g", "fat": "22g"}
     },
@@ -31,8 +31,8 @@
       "name": "Mutton Fry",
       "description": "Tender mutton pieces pan-fried with a mix of traditional spices. Medium spicy.",
       "price": "1078",
-      "image_url": "assets/chicken_curry.jpg",
-      "model_url": "assets/croissant.glb",
+      "image_url": "https://raw.githubusercontent.com/Niranjan-M-T/ARmenu/main/assets/chicken_curry.jpg",
+      "model_url": "https://raw.githubusercontent.com/Niranjan-M-T/ARmenu/main/assets/croissant.glb",
       "ingredients": ["Mutton", "Onion", "Turmeric", "Garam Masala", "Possible allergens: None mentioned."],
       "nutritional_value": {"calories": "380kcal", "protein": "35g", "fat": "25g"}
     },
@@ -40,436 +40,50 @@
       "name": "Prawn Fry",
       "description": "Juicy prawns marinated and fried for a crispy and flavorful starter. Mildly spicy.",
       "price": "1204",
-      "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Prawn+Fry",
+      "image_url": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=600&h=400&fit=crop&crop=center",
       "ingredients": ["Prawns", "Ginger Garlic Paste", "Lemon", "Corn Flour"],
       "nutritional_value": {"calories": "250kcal", "protein": "25g", "fat": "14g"},
-      "model_url": "assets/croissant.glb"
+      "model_url": "https://raw.githubusercontent.com/Niranjan-M-T/ARmenu/main/assets/croissant.glb"
     },
     {
       "name": "Vegetable Samosa",
-      "description": "Crispy fried pastry filled with a savory mix of spiced potatoes and peas. Mildly spicy.",
-      "price": "450",
-      "image_url": "https://placehold.co/600x400/33FF57/000000?text=Samosa",
-      "ingredients": ["Potatoes", "Peas", "All-purpose Flour", "Spices", "Possible allergens: Gluten."],
-      "nutritional_value": {"calories": "280kcal", "protein": "6g", "fat": "15g"},
-      "model_url": "assets/croissant.glb"
-    },
-    {
-      "name": "Paneer Tikka",
-      "description": "Cubes of soft cottage cheese marinated in a spiced yogurt blend and grilled with vegetables. Mildly spicy.",
-      "price": "850",
-      "image_url": "https://placehold.co/600x400/33FF57/000000?text=Paneer+Tikka",
-      "ingredients": ["Paneer", "Yogurt", "Bell Peppers", "Onion", "Spices", "Possible allergens: Dairy."],
-      "nutritional_value": {"calories": "320kcal", "protein": "20g", "fat": "20g"},
-      "model_url": "assets/croissant.glb"
-    }
-  ],
-  "Gravies": [
-    {
-      "name": "Chicken Gravy",
-      "description": "A classic home-style chicken curry with a rich and savory gravy. Medium spicy.",
-      "price": "996",
-      "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Chicken+Gravy",
-      "ingredients": ["Chicken", "Onion", "Tomato", "Garam Masala", "Possible allergens: None mentioned."],
-      "nutritional_value": {"calories": "400kcal", "protein": "35g", "fat": "25g"}
-    },
-    {
-      "name": "Chicken Makhanwali",
-      "description": "A creamy and buttery chicken dish, famously known as Butter Chicken. Not spicy.",
-      "price": "1162",
-      "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Chicken+Makhanwali",
-      "ingredients": ["Chicken", "Tomato Puree", "Cream", "Cashew Paste", "Possible allergens: Dairy, Nuts."],
-      "nutritional_value": {"calories": "550kcal", "protein": "38g", "fat": "40g"}
-    },
-    {
-      "name": "Mutton Curry",
-      "description": "Tender mutton cooked in a spicy and aromatic gravy, perfect with rice or bread. Medium spicy.",
-      "price": "1245",
-      "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Mutton+Curry",
-      "ingredients": ["Mutton", "Onion", "Tomato", "Yogurt", "Spices", "Possible allergens: Dairy."],
-      "nutritional_value": {"calories": "480kcal", "protein": "40g", "fat": "32g"}
-    },
-    {
-      "name": "Pork Vindaloo",
-      "description": "A fiery and tangy pork curry from Goa, with roots in Portuguese cuisine. Very spicy.",
-      "price": "1204",
-      "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Pork+Vindaloo",
-      "ingredients": ["Pork", "Vinegar", "Potatoes", "Red Chillies", "Garlic", "Possible allergens: None mentioned."],
-      "nutritional_value": {"calories": "520kcal", "protein": "35g", "fat": "40g"}
-    },
-    {
-      "name": "Kadai Paneer",
-      "description": "Cubes of paneer with bell peppers and onions in a spiced tomato-based gravy. Medium spicy.",
-      "price": "980",
-      "image_url": "https://placehold.co/600x400/33FF57/000000?text=Kadai+Paneer",
-      "ingredients": ["Paneer", "Bell Peppers", "Onion", "Tomato", "Spices", "Possible allergens: Dairy."],
-      "nutritional_value": {"calories": "450kcal", "protein": "25g", "fat": "30g"}
-    },
-    {
-      "name": "Dal Makhani",
-      "description": "A creamy and rich lentil dish slow-cooked with butter and cream. Not spicy.",
-      "price": "850",
-      "image_url": "https://placehold.co/600x400/33FF57/000000?text=Dal+Makhani",
-      "ingredients": ["Black Lentils", "Kidney Beans", "Cream", "Butter", "Spices", "Possible allergens: Dairy."],
-      "nutritional_value": {"calories": "420kcal", "protein": "18g", "fat": "28g"}
-    },
-    {
-      "name": "Fish Curry",
-      "description": "Tender fish fillets cooked in a tangy coconut-based gravy. Mildly spicy.",
-      "price": "1350",
-      "image_url": "https://placehold.co/600x400/42a5f5/000000?text=Fish+Curry",
-      "ingredients": ["Fish", "Coconut Milk", "Tamarind", "Spices", "Possible allergens: Fish."],
-      "nutritional_value": {"calories": "470kcal", "protein": "30g", "fat": "30g"}
+      "description": "Crispy pastry filled with spiced vegetables. A classic vegetarian starter.",
+      "price": "325",
+      "image_url": "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&h=400&fit=crop&crop=center",
+      "ingredients": ["Potato", "Peas", "Cumin", "Coriander", "Pastry"],
+      "nutritional_value": {"calories": "180kcal", "protein": "4g", "fat": "8g"},
+      "model_url": "https://raw.githubusercontent.com/Niranjan-M-T/ARmenu/main/assets/croissant.glb"
     }
   ],
   "Main Course": [
     {
       "name": "Chicken Biryani",
-      "description": "A savory chicken and rice dish with layers of chicken, rice, and aromatics steamed together. Medium spicy.",
-      "price": "1161",
-      "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Chicken+Biryani",
-      "ingredients": ["Basmati Rice", "Chicken", "Yogurt", "Biryani Masala", "Possible allergens: Dairy."],
-      "nutritional_value": {"calories": "600kcal", "protein": "40g", "fat": "25g"},
-      "model_url": "https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+      "description": "Aromatic basmati rice cooked with tender chicken and traditional spices.",
+      "price": "1250",
+      "image_url": "https://images.unsplash.com/photo-1563379091339-03246963d96c?w=600&h=400&fit=crop&crop=center",
+      "ingredients": ["Basmati Rice", "Chicken", "Saffron", "Yogurt", "Biryani Masala"],
+      "nutritional_value": {"calories": "450kcal", "protein": "32g", "fat": "18g"},
+      "model_url": "https://raw.githubusercontent.com/Niranjan-M-T/ARmenu/main/assets/croissant.glb"
     },
     {
-      "name": "Mutton Biryani",
-      "description": "A royal dish with beautifully spiced and fragrant layers of biryani rice centered with juicy, tender mutton. Medium spicy.",
-      "price": "1327",
-      "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Mutton+Biryani",
-      "ingredients": ["Basmati Rice", "Mutton", "Saffron", "Fried Onions", "Possible allergens: Dairy."],
-      "nutritional_value": {"calories": "650kcal", "protein": "45g", "fat": "30g"}
-    },
-    {
-      "name": "Chicken Fried Rice",
-      "description": "Classic fried rice with tender chicken pieces, vegetables, and a savory soy sauce blend. Mildly spicy.",
-      "price": "955",
-      "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Chicken+Fried+Rice",
-      "ingredients": ["Rice", "Chicken", "Carrots", "Peas", "Soy Sauce", "Possible allergens: Soy, Gluten."],
-      "nutritional_value": {"calories": "500kcal", "protein": "30g", "fat": "20g"}
-    },
-    {
-      "name": "Vegetable Biryani",
-      "description": "Fragrant basmati rice cooked with a variety of fresh vegetables and aromatic spices. Mildly spicy.",
-      "price": "890",
-      "image_url": "https://placehold.co/600x400/33FF57/000000?text=Vegetable+Biryani",
-      "ingredients": ["Basmati Rice", "Mixed Vegetables", "Spices", "Possible allergens: Dairy (if served with raita)."],
-      "nutritional_value": {"calories": "520kcal", "protein": "15g", "fat": "18g"}
-    },
-    {
-      "name": "Egg Fried Rice",
-      "description": "Wok-tossed rice with scrambled eggs and vegetables in a savory sauce. Not spicy.",
-      "price": "875",
-      "image_url": "https://placehold.co/600x400/FFD700/000000?text=Egg+Fried+Rice",
-      "ingredients": ["Rice", "Egg", "Vegetables", "Soy Sauce", "Possible allergens: Egg, Soy, Gluten."],
-      "nutritional_value": {"calories": "480kcal", "protein": "20g", "fat": "15g"}
-    },
-    {
-      "name": "Schezwan Chicken Fried Rice",
-      "description": "A fiery and flavorful fried rice dish with chicken and a special Schezwan sauce. Very spicy.",
-      "price": "1050",
-      "image_url": "https://placehold.co/600x400/FF0000/FFFFFF?text=Schezwan+Chicken",
-      "ingredients": ["Rice", "Chicken", "Schezwan Sauce", "Vegetables", "Possible allergens: Soy, Gluten."],
-      "nutritional_value": {"calories": "580kcal", "protein": "32g", "fat": "22g"}
-    },
-    {
-      "name": "Hakka Noodles",
-      "description": "Stir-fried noodles with mixed vegetables and a hint of soy sauce. Mildly spicy.",
-      "price": "925",
-      "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Hakka+Noodles",
-      "ingredients": ["Noodles", "Cabbage", "Carrots", "Bell Peppers", "Soy Sauce", "Possible allergens: Gluten, Soy."],
-      "nutritional_value": {"calories": "450kcal", "protein": "10g", "fat": "15g"}
-    }
-  ],
-  "Pizza": [
-    {
-      "name": "Chicken Pizza",
-      "description": "Classic pizza topped with seasoned chicken, mozzarella cheese, and a tangy tomato sauce. Mildly spicy.",
-      "price": "1078",
-      "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Chicken+Pizza",
-      "ingredients": ["Pizza Dough", "Tomato Sauce", "Mozzarella Cheese", "Chicken", "Bell Peppers", "Possible allergens: Gluten, Dairy."],
-      "nutritional_value": {"calories": "700kcal", "protein": "40g", "fat": "30g"}
-    },
-    {
-      "name": "Margarita Pizza",
-      "description": "A simple and delicious pizza with fresh tomatoes, mozzarella, basil, and olive oil. Not spicy.",
-      "price": "912",
-      "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Margarita+Pizza",
-      "ingredients": ["Pizza Dough", "Tomatoes", "Mozzarella Cheese", "Fresh Basil", "Olive Oil", "Possible allergens: Gluten, Dairy."],
-      "nutritional_value": {"calories": "600kcal", "protein": "25g", "fat": "25g"}
-    },
-    {
-      "name": "Tandoori Paneer Pizza",
-      "description": "Pizza with tandoori-marinated paneer, onions, and bell peppers. Medium spicy.",
-      "price": "1050",
-      "image_url": "https://placehold.co/600x400/33FF57/000000?text=Tandoori+Paneer+Pizza",
-      "ingredients": ["Pizza Dough", "Tandoori Paneer", "Mozzarella Cheese", "Onions", "Bell Peppers", "Possible allergens: Gluten, Dairy."],
-      "nutritional_value": {"calories": "680kcal", "protein": "35g", "fat": "28g"}
-    },
-    {
-      "name": "Veggie Supreme Pizza",
-      "description": "Loaded with a colorful assortment of vegetables like mushrooms, olives, and corn. Not spicy.",
-      "price": "980",
-      "image_url": "https://placehold.co/600x400/33FF57/000000?text=Veggie+Supreme+Pizza",
-      "ingredients": ["Pizza Dough", "Tomato Sauce", "Mozzarella Cheese", "Mushrooms", "Olives", "Corn", "Possible allergens: Gluten, Dairy."],
-      "nutritional_value": {"calories": "620kcal", "protein": "22g", "fat": "24g"}
-    },
-    {
-      "name": "Chicken Alfredo Pizza",
-      "description": "A rich and creamy pizza with Alfredo sauce, chicken, and spinach. Not spicy.",
-      "price": "1150",
-      "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Chicken+Alfredo",
-      "ingredients": ["Pizza Dough", "Alfredo Sauce", "Chicken", "Spinach", "Mozzarella Cheese", "Possible allergens: Gluten, Dairy."],
-      "nutritional_value": {"calories": "750kcal", "protein": "45g", "fat": "35g"}
-    },
-    {
-      "name": "Hawaiian Pizza",
-      "description": "A classic sweet and savory pizza with ham and pineapple. Not spicy.",
-      "price": "1090",
-      "image_url": "https://placehold.co/600x400/FFD700/000000?text=Hawaiian+Pizza",
-      "ingredients": ["Pizza Dough", "Tomato Sauce", "Mozzarella Cheese", "Ham", "Pineapple", "Possible allergens: Gluten, Dairy."],
-      "nutritional_value": {"calories": "690kcal", "protein": "38g", "fat": "27g"}
-    }
-  ],
-  "Breads": [
-    {
-      "name": "Kerala Parota",
-      "description": "A layered flatbread, originating from the Indian subcontinent, made from maida flour. Not spicy.",
-      "price": "208",
-      "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Kerala+Parota",
-      "ingredients": ["Maida Flour", "Oil", "Water", "Salt", "Possible allergens: Gluten."],
-      "nutritional_value": {"calories": "200kcal", "protein": "5g", "fat": "8g"}
-    },
-    {
-      "name": "Chappati",
-      "description": "A simple and soft unleavened flatbread made from whole wheat flour. Not spicy.",
-      "price": "125",
-      "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Chappati",
-      "ingredients": ["Whole Wheat Flour", "Water", "Salt", "Possible allergens: Gluten."],
-      "nutritional_value": {"calories": "120kcal", "protein": "4g", "fat": "1g"}
-    },
-    {
-      "name": "Butter Naan",
-      "description": "A soft, fluffy naan bread brushed with melted butter. Not spicy.",
-      "price": "250",
-      "image_url": "https://placehold.co/600x400/8B4513/FFFFFF?text=Butter+Naan",
-      "ingredients": ["All-purpose Flour", "Yeast", "Yogurt", "Butter", "Possible allergens: Gluten, Dairy."],
-      "nutritional_value": {"calories": "280kcal", "protein": "8g", "fat": "10g"}
-    },
-    {
-      "name": "Garlic Naan",
-      "description": "Naan bread infused with minced garlic and herbs, and brushed with butter. Not spicy.",
-      "price": "280",
-      "image_url": "https://placehold.co/600x400/8B4513/FFFFFF?text=Garlic+Naan",
-      "ingredients": ["All-purpose Flour", "Yeast", "Garlic", "Butter", "Possible allergens: Gluten, Dairy."],
-      "nutritional_value": {"calories": "300kcal", "protein": "9g", "fat": "12g"}
-    },
-    {
-      "name": "Tandoori Roti",
-      "description": "A whole wheat flatbread baked in a tandoor (clay oven). Not spicy.",
-      "price": "180",
-      "image_url": "https://placehold.co/600x400/8B4513/FFFFFF?text=Tandoori+Roti",
-      "ingredients": ["Whole Wheat Flour", "Water", "Salt", "Possible allergens: Gluten."],
-      "nutritional_value": {"calories": "150kcal", "protein": "5g", "fat": "2g"}
-    },
-    {
-      "name": "Cheese Naan",
-      "description": "Soft naan bread stuffed with a generous amount of melted cheese. Not spicy.",
-      "price": "350",
-      "image_url": "https://placehold.co/600x400/8B4513/FFFFFF?text=Cheese+Naan",
-      "ingredients": ["All-purpose Flour", "Yeast", "Cheese", "Possible allergens: Gluten, Dairy."],
-      "nutritional_value": {"calories": "400kcal", "protein": "15g", "fat": "20g"}
-    }
-  ],
-  "Biryani Combos (Serves 5 Ppl)": [
-    {
-      "name": "Mutton Biryani Combo",
-      "description": "A family pack of our royal Mutton Biryani, served with raita and gravy. Medium spicy.",
-      "price": "5395",
-      "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Mutton+Biryani+Combo",
-      "ingredients": ["Mutton Biryani", "Raita", "Gravy", "Salad", "Possible allergens: Dairy."],
-      "nutritional_value": {"calories": "3000kcal", "protein": "220g", "fat": "150g"}
-    },
-    {
-      "name": "Chicken Biryani Combo",
-      "description": "A generous portion of our classic Chicken Biryani for the whole family. Medium spicy.",
-      "price": "4565",
-      "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Chicken+Biryani+Combo",
-      "ingredients": ["Chicken Biryani", "Raita", "Gravy", "Salad", "Possible allergens: Dairy."],
-      "nutritional_value": {"calories": "2800kcal", "protein": "200g", "fat": "120g"}
-    },
-    {
-      "name": "Vegetable Biryani Combo",
-      "description": "A family pack of our fragrant Vegetable Biryani, served with raita and salad. Mildly spicy.",
-      "price": "3995",
-      "image_url": "https://placehold.co/600x400/33FF57/000000?text=Veg+Biryani+Combo",
-      "ingredients": ["Vegetable Biryani", "Raita", "Salad", "Possible allergens: Dairy."],
-      "nutritional_value": {"calories": "2600kcal", "protein": "100g", "fat": "100g"}
-    },
-    {
-      "name": "Prawn Biryani Combo",
-      "description": "A family pack of our delicious Prawn Biryani with raita and salad. Medium spicy.",
-      "price": "5500",
-      "image_url": "https://placehold.co/600x400/FF5733/FFFFFF?text=Prawn+Biryani+Combo",
-      "ingredients": ["Prawn Biryani", "Raita", "Gravy", "Salad", "Possible allergens: Shellfish, Dairy."],
-      "nutritional_value": {"calories": "2900kcal", "protein": "210g", "fat": "140g"}
-    },
-    {
-      "name": "Egg Biryani Combo",
-      "description": "A combo pack of our flavorful Egg Biryani for the family. Mildly spicy.",
-      "price": "4200",
-      "image_url": "https://placehold.co/600x400/FFD700/000000?text=Egg+Biryani+Combo",
-      "ingredients": ["Egg Biryani", "Raita", "Gravy", "Salad", "Possible allergens: Egg, Dairy."],
-      "nutritional_value": {"calories": "2750kcal", "protein": "190g", "fat": "115g"}
+      "name": "Fish Curry",
+      "description": "Fresh fish cooked in coconut milk with traditional South Indian spices.",
+      "price": "975",
+      "image_url": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&h=400&fit=crop&crop=center",
+      "ingredients": ["Fish", "Coconut Milk", "Curry Leaves", "Tamarind", "Red Chilli"],
+      "nutritional_value": {"calories": "320kcal", "protein": "28g", "fat": "20g"},
+      "model_url": "https://raw.githubusercontent.com/Niranjan-M-T/ARmenu/main/assets/croissant.glb"
     }
   ],
   "Desserts": [
     {
       "name": "Gulab Jamun",
-      "description": "Soft, deep-fried milk-solids dumplings soaked in a rose-flavored sugar syrup. Not spicy.",
-      "price": "350",
-      "image_url": "https://placehold.co/600x400/87CEEB/FFFFFF?text=Gulab+Jamun",
-      "ingredients": ["Khoya", "Sugar", "Cardamom", "Rose Water", "Possible allergens: Dairy, Gluten."],
-      "nutritional_value": {"calories": "400kcal", "protein": "8g", "fat": "15g"}
-    },
-    {
-      "name": "Chocolate Lava Cake",
-      "description": "A rich chocolate cake with a molten chocolate center, served with vanilla ice cream. Not spicy.",
-      "price": "500",
-      "image_url": "https://placehold.co/600x400/D2B48C/000000?text=Chocolate+Lava+Cake",
-      "ingredients": ["Chocolate", "Flour", "Butter", "Eggs", "Sugar", "Possible allergens: Gluten, Dairy, Egg."],
-      "nutritional_value": {"calories": "550kcal", "protein": "10g", "fat": "30g"}
-    },
-    {
-      "name": "Kulfi",
-      "description": "Traditional Indian ice cream made with sweetened and thickened milk, flavored with cardamom and saffron. Not spicy.",
-      "price": "250",
-      "image_url": "https://placehold.co/600x400/E6E6FA/000000?text=Kulfi",
-      "ingredients": ["Milk", "Sugar", "Cardamom", "Saffron", "Possible allergens: Dairy, Nuts."],
-      "nutritional_value": {"calories": "300kcal", "protein": "12g", "fat": "18g"}
-    },
-    {
-      "name": "Gajar Halwa",
-      "description": "A classic Indian dessert made from grated carrots, milk, sugar, and nuts. Not spicy.",
-      "price": "400",
-      "image_url": "https://placehold.co/600x400/FFA07A/000000?text=Gajar+Halwa",
-      "ingredients": ["Carrots", "Milk", "Sugar", "Ghee", "Nuts", "Possible allergens: Dairy, Nuts."],
-      "nutritional_value": {"calories": "450kcal", "protein": "10g", "fat": "25g"}
-    },
-    {
-      "name": "Rasmalai",
-      "description": "Soft, spongy cheese patties soaked in a sweetened, thickened milk infused with cardamom. Not spicy.",
-      "price": "380",
-      "image_url": "https://placehold.co/600x400/F5F5DC/000000?text=Rasmalai",
-      "ingredients": ["Paneer", "Milk", "Sugar", "Cardamom", "Pistachios", "Possible allergens: Dairy, Nuts."],
-      "nutritional_value": {"calories": "320kcal", "protein": "15g", "fat": "10g"}
-    },
-    {
-      "name": "Brownie with Ice Cream",
-      "description": "A warm chocolate brownie served with a scoop of vanilla ice cream. Not spicy.",
-      "price": "450",
-      "image_url": "https://placehold.co/600x400/4B2C20/FFFFFF?text=Brownie",
-      "ingredients": ["Chocolate", "Flour", "Butter", "Eggs", "Sugar", "Ice Cream", "Possible allergens: Gluten, Dairy, Egg."],
-      "nutritional_value": {"calories": "600kcal", "protein": "8g", "fat": "35g"}
+      "description": "Soft milk-based dumplings soaked in cardamom-flavored sugar syrup.",
+      "price": "225",
+      "image_url": "https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=600&h=400&fit=crop&crop=center",
+      "ingredients": ["Milk Powder", "Sugar", "Cardamom", "Rose Water"],
+      "nutritional_value": {"calories": "280kcal", "protein": "6g", "fat": "12g"},
+      "model_url": "https://raw.githubusercontent.com/Niranjan-M-T/ARmenu/main/assets/croissant.glb"
     }
-  ],
-  "Drinks": [
-      {
-        "name": "Masala Chai",
-        "description": "A spiced tea beverage made with black tea, milk, and a blend of aromatic spices. Not spicy.",
-        "price": "150",
-        "image_url": "https://placehold.co/600x400/654321/FFFFFF?text=Masala+Chai",
-        "ingredients": ["Black Tea", "Milk", "Spices", "Sugar", "Possible allergens: Dairy."],
-        "nutritional_value": {"calories": "80kcal", "protein": "3g", "fat": "3g"}
-      },
-      {
-        "name": "Filter Coffee",
-        "description": "A strong, decoction-style coffee popular in South India, served with milk and sugar. Not spicy.",
-        "price": "180",
-        "image_url": "https://placehold.co/600x400/4B2C20/FFFFFF?text=Filter+Coffee",
-        "ingredients": ["Coffee Powder", "Milk", "Sugar", "Possible allergens: Dairy."],
-        "nutritional_value": {"calories": "90kcal", "protein": "4g", "fat": "4g"}
-      },
-      {
-        "name": "Espresso",
-        "description": "A strong, concentrated coffee brew. Not spicy.",
-        "price": "200",
-        "image_url": "https://placehold.co/600x400/4B2C20/FFFFFF?text=Espresso",
-        "ingredients": ["Coffee Beans", "Water", "Possible allergens: None."],
-        "nutritional_value": {"calories": "5kcal", "protein": "0.3g", "fat": "0g"}
-      },
-      {
-        "name": "Cappuccino",
-        "description": "An espresso-based coffee drink prepared with steamed milk foam. Not spicy.",
-        "price": "250",
-        "image_url": "https://placehold.co/600x400/4B2C20/FFFFFF?text=Cappuccino",
-        "ingredients": ["Espresso", "Steamed Milk", "Milk Foam", "Possible allergens: Dairy."],
-        "nutritional_value": {"calories": "110kcal", "protein": "6g", "fat": "6g"}
-      },
-      {
-        "name": "Hot Chocolate",
-        "description": "A warm, comforting beverage made with melted chocolate or cocoa powder and milk. Not spicy.",
-        "price": "220",
-        "image_url": "https://placehold.co/600x400/D2B48C/000000?text=Hot+Chocolate",
-        "ingredients": ["Milk", "Cocoa Powder", "Sugar", "Possible allergens: Dairy."],
-        "nutritional_value": {"calories": "200kcal", "protein": "8g", "fat": "9g"}
-      },
-      {
-        "name": "Green Tea",
-        "description": "A healthy and refreshing tea, rich in antioxidants. Not spicy.",
-        "price": "100",
-        "image_url": "https://placehold.co/600x400/B2D8B2/000000?text=Green+Tea",
-        "ingredients": ["Green Tea Leaves", "Hot Water", "Possible allergens: None."],
-        "nutritional_value": {"calories": "0kcal", "protein": "0g", "fat": "0g"}
-      },
-
-      {
-        "name": "Fresh Lime Soda",
-        "description": "A refreshing and tangy beverage made with fresh lime juice, sugar, and soda. Not spicy.",
-        "price": "200",
-        "image_url": "https://placehold.co/600x400/ADD8E6/000000?text=Fresh+Lime+Soda",
-        "ingredients": ["Lime Juice", "Sugar", "Soda", "Mint", "Possible allergens: None."],
-        "nutritional_value": {"calories": "120kcal", "protein": "0g", "fat": "0g"}
-      },
-      {
-        "name": "Mango Lassi",
-        "description": "A sweet and creamy yogurt-based drink blended with ripe mango pulp. Not spicy.",
-        "price": "250",
-        "image_url": "https://placehold.co/600x400/FFD700/000000?text=Mango+Lassi",
-        "ingredients": ["Yogurt", "Mango Pulp", "Sugar", "Cardamom", "Possible allergens: Dairy."],
-        "nutritional_value": {"calories": "280kcal", "protein": "8g", "fat": "6g"}
-      },
-      {
-        "name": "Iced Tea",
-        "description": "A chilled, sweet tea served over ice with a slice of lemon. Not spicy.",
-        "price": "180",
-        "image_url": "https://placehold.co/600x400/F5F5DC/000000?text=Iced+Tea",
-        "ingredients": ["Black Tea", "Lemon", "Sugar", "Water", "Possible allergens: None."],
-        "nutritional_value": {"calories": "100kcal", "protein": "0g", "fat": "0g"}
-      },
-      {
-        "name": "Cold Coffee",
-        "description": "A creamy and frothy coffee blended with milk and ice cream. Not spicy.",
-        "price": "280",
-        "image_url": "https://placehold.co/600x400/4B2C20/FFFFFF?text=Cold+Coffee",
-        "ingredients": ["Coffee", "Milk", "Sugar", "Ice Cream", "Possible allergens: Dairy."],
-        "nutritional_value": {"calories": "350kcal", "protein": "10g", "fat": "15g"}
-      },
-      {
-        "name": "Strawberry Milkshake",
-        "description": "A thick and creamy shake blended with fresh strawberries and milk. Not spicy.",
-        "price": "300",
-        "image_url": "https://placehold.co/600x400/FF69B4/FFFFFF?text=Strawberry+Milkshake",
-        "ingredients": ["Strawberries", "Milk", "Ice Cream", "Sugar", "Possible allergens: Dairy."],
-        "nutritional_value": {"calories": "400kcal", "protein": "12g", "fat": "18g"}
-      },
-      {
-        "name": "Orange Juice",
-        "description": "Freshly squeezed orange juice, a perfect way to start your day. Not spicy.",
-        "price": "220",
-        "image_url": "https://placehold.co/600x400/FFA500/000000?text=Orange+Juice",
-        "ingredients": ["Oranges", "Possible allergens: None."],
-        "nutritional_value": {"calories": "150kcal", "protein": "2g", "fat": "0g"}
-      }
-    ]
+  ]
 }
